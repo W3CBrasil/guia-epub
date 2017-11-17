@@ -69,7 +69,9 @@ Porém, para quem está aprendendo sobre o formato ePub este pode ser um exercí
       * ...
 ## Acessibilidade do ePub3
 Especificações
+
 Boas práticas
+
 Teste do arquivo
 
 ## Mini Glossário
