@@ -82,3 +82,45 @@ Esta sessão foi construída com base nas principais diretrizes de acessibilidad
   4.1.1 Análise: No conteúdo implementado utilizando linguagens de marcação, os elementos dispõem de tags completas de início e de fim, os elementos são aninhados de acordo com as respectivas especificações, os elementos não contêm atributos duplicados, e quaisquer IDs são exclusivos, exceto quando as especificações permitem estas características. (Nível A)
   
   4.1.2 Nome, Função, Valor: Para todos os componentes de interface de usuário (incluindo, mas não se limitando a: elementos de formulário, links e componentes gerados por scripts), o nome e a função podem ser determinados por meio de código de programação; os estados, as propriedades e os valores, que possam ser definidos pelo usuário, podem ser definidos por meio de código de programação; e a notificação sobre alterações destes itens está disponível para os agentes de usuário, incluindo as tecnologias assistivas. (Nível A)  
+
+
+
+
+
+Diretrizes para a construção de um documento em ePub3
+
+As seguintes orientações foram extraídas e adaptadas do documento ePub3 Accessibility Guidelines (https://idpf.github.io/a11y-guidelines/) produzido pelo IDPF com base nas boas práticas de desenvolvimento de um documento Web, para que seja amigável para um documento ePub e considere as recomendações de acessibilidade do W3C.
+
+**Semântica**
+**Ordem lógica de leitura**
+O objetivo desta orientação é garantir que a marcação do documento obedeça a ordem lógica de leitura do documento. A ordem lógica recomenda o uso de elementos como <figure> para posicionar imagens com suas legendas e <aside> para conteúdos complementares (não necessariamente apenas laterais).
+ 
+Utilize o elemento <figcaption> para a legenda da figura. Considere que o atributo "alt" tem a função de descrever a imagem para uma pessoa que não consegue enxergar a foto e utiliza leitores de tela para ler o conteúdo. A descrição pode ser feita no elemento <figcaption>. É recomendado que o usuário seja informado que a descrição vem a seguir da imagem, como no exemplo abaixo.
+ 
+ <figure>
+   <img src="img01.jpg" alt="Descrição da imagem abaixo"/>
+   <figcaption>
+      Figura 2.2: Vertebrados são animais que posssuem uma coluna vertebral.
+   </figcaption>
+</figure>
+ 
+ **O atributo epub:type**
+ Para fazer ebooks acessíveis é necessário considerar que parte do público vai acessar o conteúdo de uma forma não visual, por isso a ordem lógica de leitura deve ser definida na marcação do código. Para facilitar esse trabalho, o EPUB 3 inclui um novo atributo chamado epub:type, que permite que significados mais precisos sejam aplicados às tags genéricas, um processo chamado inflexão semântica.
+ 
+ O atributo epub:type pode ser utilizado em qualquer elemento HTML:
+ 
+ <section epub:type="dedication">
+   …
+<section>
+ 
+ O valor "dedication" usado no exemplo acima não é apenas uma string aleatória, mas é um valor previsível que os sistemas de leitura podem esperar encontrar em publicações.
+ 
+Embora, em teoria, qualquer semântica possa ser aplicada a qualquer elemento, apenas uma certa semântica faz sentido usar em qualquer tag. Marcando um elemento <aside>, por exemplo,  como uma nota de rodapé é apropriado, mas marcar uma <section> como nota de rodapé nem tanto. O Vocabulário de Semântica Estrutural lista os elementos comuns que cada semântica destina-se a ser usada em conjunto para facilitar esse processo (embora existam exceções à regra).
+
+Você valor do epub:type não se limita a fazer apenas uma declaração no atributo. É possível fazer a declaração de mais de uma referência, separando cada um deles por espaços:
+
+<section epub:type="dedication backmatter">
+   …
+<section>
+ 
+Observe que a ordem da semântica não é importante para seu processamento. Entretanto, incluir mais de uma referência semântica pode afetar o estilo do documento. A seguinte regra CSS corresponde ao elemento <section>:
