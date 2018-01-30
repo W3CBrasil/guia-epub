@@ -97,21 +97,25 @@ O objetivo desta orientação é garantir que a marcação do documento obedeça
  
 Utilize o elemento <figcaption> para a legenda da figura. Considere que o atributo "alt" tem a função de descrever a imagem para uma pessoa que não consegue enxergar a foto e utiliza leitores de tela para ler o conteúdo. A descrição pode ser feita no elemento <figcaption>. É recomendado que o usuário seja informado que a descrição vem a seguir da imagem, como no exemplo abaixo.
  
- <figure>
-   <img src="img01.jpg" alt="Descrição da imagem abaixo"/>
+```
+<figure>
+<img src="img01.jpg" alt="Descrição da imagem abaixo"/>
    <figcaption>
       Figura 2.2: Vertebrados são animais que posssuem uma coluna vertebral.
    </figcaption>
 </figure>
+```
  
  **O atributo epub:type**
  Para fazer ebooks acessíveis é necessário considerar que parte do público vai acessar o conteúdo de uma forma não visual, por isso a ordem lógica de leitura deve ser definida na marcação do código. Para facilitar esse trabalho, o EPUB 3 inclui um novo atributo chamado epub:type, que permite que significados mais precisos sejam aplicados às tags genéricas, um processo chamado inflexão semântica.
  
  O atributo epub:type pode ser utilizado em qualquer elemento HTML:
  
+ ```
  <section epub:type="dedication">
    …
 <section>
+```
  
  O valor "dedication" usado no exemplo acima não é apenas uma string aleatória, mas é um valor previsível que os sistemas de leitura podem esperar encontrar em publicações.
  
@@ -119,8 +123,10 @@ Embora, em teoria, qualquer semântica possa ser aplicada a qualquer elemento, a
 
 Você valor do epub:type não se limita a fazer apenas uma declaração no atributo. É possível fazer a declaração de mais de uma referência, separando cada um deles por espaços:
 
+```
 <section epub:type="dedication backmatter">
    …
 <section>
+```
  
 Observe que a ordem da semântica não é importante para seu processamento. Entretanto, incluir mais de uma referência semântica pode afetar o estilo do documento. A seguinte regra CSS corresponde ao elemento <section>:
