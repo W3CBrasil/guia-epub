@@ -87,7 +87,7 @@ Esta sessão foi construída com base nas principais diretrizes de acessibilidad
 
 
 
-Diretrizes para a construção de um documento em ePub3
+# Diretrizes para a construção de um documento em ePub3
 
 As seguintes orientações foram extraídas e adaptadas do documento ePub3 Accessibility Guidelines (https://idpf.github.io/a11y-guidelines/) produzido pelo IDPF com base nas boas práticas de desenvolvimento de um documento Web, para que seja amigável para um documento ePub e considere as recomendações de acessibilidade do W3C.
 
@@ -130,3 +130,202 @@ Você valor do epub:type não se limita a fazer apenas uma declaração no atrib
 ```
  
 Observe que a ordem da semântica não é importante para seu processamento. Entretanto, incluir mais de uma referência semântica pode afetar o estilo do documento. A seguinte regra CSS corresponde ao elemento <section>:
+ 
+ ```
+ section[epub|type='dedication'] {
+   …
+}
+```
+Uma vez que uma semântica foi definida, a natureza do elemento influencia todo o conteúdo definido nela. Por exemplo, embora o exemplo anterior tenha anexado a semântica de "backmatter" ao elemento que contém "dedication", todas as seções "backmatter" podem ser agrupadas em uma "backmatter" principal da seguinte maneira:
+
+```
+<section epub:type="backmatter">
+   <section epub:type="dedication">
+      …
+   </section>
+   <section epub:type="index">
+      …
+   </section>
+   …
+<section>
+```
+
+# Declarando o namespace do epub
+
+Ao usar o atributo epub:type em um documento de conteúdo, o namespace "epub" deve ser declarado no elemento que contém o atributo ou em um de seus antecessores. O namespace normalmente é declarado uma vez no elemento html, como no exemplo a seguir:
+
+```
+<html …
+     xmlns:epub="http://www.idpf.org/2007/ops">
+   …
+   <dl epub:type="glossary">
+      …
+   </dl>
+   …
+</html>
+```
+
+
+Semântica simples de um documento ePub
+
+Capa:
+```
+<body epub:type="cover">
+   <img class="cover-img" src="cover.jpg" alt="Cover Image"/>
+</body>
+```
+Prefácio (Preface)
+```
+<section epub:type="preface">
+   …
+</section>
+```
+Prefácio (Foreword)
+```
+<section epub:type="foreword">
+   …
+</section>
+```
+Parte
+```
+<section epub:type="part">
+   …
+</section>
+```
+Capítulo
+```
+<section epub:type="chapter">
+   …
+</section>
+Footnote and reference
+<p>lorum ipsum.<a epub:type="noteref" href="#fn01">1</a></p>
+<aside id="fn01" epub:type="footnote">
+   …
+</aside>
+```
+Nota e referência
+```
+<p>lorum ipsum.<a epub:type="noteref" href="#en01">1</a></p>
+<aside id="en01" epub:type="rearnote">
+   …
+</aside>
+```
+Sessão de notas finais
+```
+<section epub:type="rearnotes">
+   <h1>Endnotes</h1>
+   
+   <section>
+      <h2>Chapter 1</h2>
+      <aside id="c01-en01" epub:type="rearnote">
+         …
+      </aside>
+      …
+   </section>
+   …
+</section>
+```
+Anotação e referência
+```
+<p>
+   …ipsum.<a epub:type="annoref" href="#a01">1</a>
+</p>
+<aside id="a01" epub:type="annotation">
+   …
+</aside>
+```
+Barra Lateral
+```
+<aside epub:type="sidebar">
+   <h3>Killer Bee Migration</h3>
+   …
+</aside>
+```
+Glossário
+```
+<dl epub:type="glossary">
+   …
+</dl>
+```
+Bibliografia
+```
+<section epub:type="bibliography">
+   …
+</section>
+```
+Índice
+```
+<section epub:type="index">
+   …
+</section>
+```
+
+# Separação do markup e estilo
+A aparência visual de um ebook é bastante considerada por autores, mas é fundamental considerar os leitores que consumirão sua obra de forma não visual, como usuários de displays braille e leitores de tela. Separar o estilo (CSS) do markup não serve somente para a organização do código. Isso representa o quanto a semântica do código é importante e deve transmitir significado para todos os leitores. 
+
+O uso mais eficaz de criar marcações com estruturas significativas específicas para documentos ePub é utilizando o atributo epub:type, criado especificamente para possibilitar a inflexão semântica. 
+
+Esse atributo pode ser utilizado por seletores de CSS para especificar os elementos que receberão os atributos de customização.
+
+Manter o markup separado do estilo é uma boa prática pois facilita a manutenção do código e possibilitar que o leitor possa manipular o estilo e mudar certos parâmetros conforme sua necessidade (por exemplo uma cor diferente para melhorar o nível de contraste). Assim a atualização em apenas um arquivo CSS refletirá em todos os arquivos HTML do documento ePub. É possível ainda colocar múltiplos arquivos CSS, conforme a necessidade da publicação.
+
+Exemplo: 
+
+O seguinte código CSS fará com que um box seja posicionado na lateral direita do conteúdo:
+```
+@namespace epub 'http://www.idpf.org/2007/ops'
+aside[epub|type~='sidebar'] {
+   padding: 0.5em;
+   margin-left: 2em;
+   width: 25%;
+   max-width: 15em;
+   background-color: rgb(240,240,240);
+   border: solid 1px; rgb(0,0,0);
+   float: right;
+}
+```
+Ele será aplicado neste código HTML:
+```
+<aside epub:type="sidebar">
+   <h4>UK Prime Ministers</h4>
+   <ol>
+   	<li>Sir Robert Walpole</li>
+   	…
+   </ol>
+</aside>
+```
+Para relacionar o arquivo CSS ao código, utilize o elemento "link" da seguinte forma:
+```
+<html …>
+   <head>
+      …
+      <link
+           rel="stylesheet"
+           type="text/css"
+           href="css/epub3.css"/>
+      …
+   </head>
+   …
+</html>
+```
+É possível ainda definir estilos para dispositivos com tamanhos de tela diferentes (especialmente para dispositivos móveis):
+```
+<html …>
+   <head>
+      …
+      <link
+           rel="stylesheet"
+           type="text/css"
+           href="css/epub3.css"
+           media="screen"/>
+      
+      <link
+           rel="stylesheet"
+           type="text/css"
+           href="css/epub3-mobile.css"
+           media="screen and (max-width:480px)"/>
+      …
+   </head>
+   …
+</html>
+```
