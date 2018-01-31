@@ -91,8 +91,7 @@ Esta sessão foi construída com base nas principais diretrizes de acessibilidad
 
 As seguintes orientações foram extraídas e adaptadas do documento ePub3 Accessibility Guidelines (https://idpf.github.io/a11y-guidelines/) produzido pelo IDPF com base nas boas práticas de desenvolvimento de um documento Web, para que seja amigável para um documento ePub e considere as recomendações de acessibilidade do W3C.
 
-**Semântica**
-**Ordem lógica de leitura**
+## Ordem lógica de leitura
 O objetivo desta orientação é garantir que a marcação do documento obedeça a ordem lógica de leitura do documento. A ordem lógica recomenda o uso de elementos como ```<figure>``` para posicionar imagens com suas legendas e ```<aside>``` para conteúdos complementares (não necessariamente apenas laterais).
  
 Utilize o elemento ```<figcaption>``` para a legenda da figura. Considere que o atributo ```alt``` tem a função de descrever a imagem para uma pessoa que não consegue enxergar a foto e utiliza leitores de tela para ler o conteúdo. A descrição pode ser feita no elemento ```<figcaption>```. É recomendado que o usuário seja informado que a descrição vem a seguir da imagem, como no exemplo abaixo.
@@ -106,7 +105,7 @@ Utilize o elemento ```<figcaption>``` para a legenda da figura. Considere que o 
 </figure>
 ```
  
- **O atributo epub:type**
+## O atributo epub:type
  Para fazer ebooks acessíveis é necessário considerar que parte do público vai acessar o conteúdo de uma forma não visual, por isso a ordem lógica de leitura deve ser definida na marcação do código. Para facilitar esse trabalho, o EPUB 3 inclui um novo atributo chamado ```epub:type```, que permite que significados mais precisos sejam aplicados às tags genéricas, um processo chamado inflexão semântica.
  
  O atributo epub:type pode ser utilizado em qualquer elemento HTML:
@@ -150,7 +149,7 @@ Uma vez que uma semântica foi definida, a natureza do elemento influencia todo 
 <section>
 ```
 
-# Declarando o namespace do epub
+## Declarando o namespace do epub
 
 Ao usar o atributo ```epub:type``` em um documento de conteúdo, o namespace ```epub``` deve ser declarado no elemento que contém o atributo ou em um de seus antecessores. O namespace normalmente é declarado uma vez no elemento ```<html>```, como no exemplo a seguir:
 
@@ -260,7 +259,7 @@ Bibliografia
 </section>
 ```
 
-# Separação do markup e estilo
+## Separação do markup e estilo
 A aparência visual de um ebook é bastante considerada por autores, mas é fundamental considerar os leitores que consumirão sua obra de forma não visual, como usuários de displays braille e leitores de tela. Separar o estilo (CSS) do markup não serve somente para a organização do código. Isso representa o quanto a semântica do código é importante e deve transmitir significado para todos os leitores. 
 
 O uso mais eficaz de criar marcações com estruturas significativas específicas para documentos ePub é utilizando o atributo epub:type, criado especificamente para possibilitar a inflexão semântica. 
@@ -329,7 +328,7 @@ Para relacionar o arquivo CSS ao código, utilize o elemento ```link``` da segui
    …
 </html>
 ```
-# Idioma do documento
+## Idioma do documento
 Especificar o idioma padrão de um documento - bem como quaisquer alterações no documento, como instâncias de termos de idioma estrangeiro, diálogo ou passagens em outro idioma - ajuda a garantir que as tecnologias de suporte possam renderizar corretamente o texto (por exemplo, para que os caracteres de braille corretos sejam apresentados, ou que uma voz seja capaz de renderizar o idioma usado).
 
 Para definir o idioma padrão para um documento XHTML, os atributos ```lang``` e ```xml:lang``` language devem ser inseridos no elemento html de conteúdo. O código de idioma definido nesses atributos deve coincidir com um dos códigos de idioma especificados em um elemento dc:lang na seção de metadados do documento do pacote.
@@ -358,7 +357,7 @@ Quando anexado a elementos dentro do elemento ```<body>```, os atributos identif
    </body>
 </html>
 ```
-# Número de páginas
+## Número de páginas
 
 Se um ebook for produzido a partir do mesmo fluxo de trabalho que um documento impresso, os marcadores de paginação de impressão devem ser mantidos no documento. Esses marcadores beneficiam os leitores em ambientes mistos de impressão/digital, como uma sala de aula, pois os números de página permitem um ponto de referência comum entre as duas edições.
 
@@ -391,7 +390,7 @@ Quando incluir as referências da página de impressão, os metadados do documen
 </package>
 ```
 
-# Quadros em linha (iframe)
+## Quadros em linha (iframe)
 
 Os quadros em linha (iframe) geralmente se integram bem com as tecnologias assistivas, mas as seguintes considerações de acessibilidade sempre devem ser respeitadas ao usá-las:
 
@@ -424,7 +423,7 @@ Exemplo de ```iframe``` invisível
         class="hidden">
 </iframe>
 ```
-# Negrito e itálico
+## Negrito e itálico
 
 Textos em negrito e itálico são freqüentemente usados para meros elementos de estilo, mas eles carregam vários tipos de informações pertinentes ao texto: pontos de ênfase, mudanças de tom ou localização, nomes especiais, etc. A não ser que a marcação semântica correta seja usada para aplicar esta formatação, no entanto, a mesma informação não pode ser transmitida para leitores não visuais.
 
@@ -440,3 +439,67 @@ O elemento ```i``` é usado quando o uso de itálico indica uma mudança de tom 
 O elemento ```b``` é usado sempre que o negrito transmite significado semântico, semelhante ao uso de ```i``` para marcação semântica (por exemplo, palavras-chave).
 * **```font-style: itálico e font-weight: bold ```**:  
 As propriedades CSS para negrito e itálico devem ser usadas sempre que o uso de negrito e itálico é de apresentação (por exemplo, em títulos e palavras-chave). A formatação CSS não possui semântica, portanto a ênfase não será notada por tecnologias assistivas.
+
+Exemplo de uso do elemento ```<em>``` para estressar a vocalização
+```
+<p>
+   … There was nothing so <em>very</em> remarkable
+   in that; nor did Alice think it so <em>very</em>
+   much out of the way to hear the Rabbit say to
+   itself, <q>Oh dear! Oh dear! I shall be 
+   late!</q> …
+</p>
+<p>
+   … 'Really this is what is meant by the Fourth
+   Dimension, though some people who talk about the 
+   Fourth Dimension do not know they mean it. It is 
+   only another way of looking at Time. <em>There 
+   is no difference between Time and any of the 
+   three dimensions of Space except that our 
+   consciousness moves along it</em>. …
+</p>
+```
+Exemplo de uso do elemento ```<strong>``` para indicar importância
+```
+<p>
+   <strong>Warning</strong>, all features should 
+   be considered unstable …
+</p>
+<p>
+   <strong>Do not feed the bears!</strong> 
+</p>
+```
+Exemplo de uso do elemento ```<i>``` para indicar termos em latim
+```
+<p>
+   When hybrids are able to breed <i>inter se</i>, 
+   they transmit …
+</p>
+<p>
+   Among the sea-shells, the most abundant was the 
+   <i>Patella deaurat</i> …
+   ```
+   
+</p>
+
+## Hiperlinks
+O uso de hiperlinks em um ebook deve ser considerado cuidadosamente para evitar que seu uso atrapalhe a experiência de leitura do usuário.
+
+A navegação por tecnologia assistiva vai fazer foco em cada um dos links, o que pode causar dificuldade para o usuário navegar pela publicação. Outro problema do seu uso excessivo é que leitores de tela costumam ler o termo "link" antes da palavra marcada para informar o usuário. Esse tipo de interrupção na leitura pode atrapalhar a experiência de leitura do usuário.
+
+Remover links redundantes e fazer uso de forma consciente é a melhor recomendação para seu uso em um ebook. 
+
+É importante também garantir que o usuário consiga perceber e distinguir links do restante do texto. Remover o sublinhado não é proibido, mas recomenda-se que exista um contraste adequado e diferença na forma de exibição, seja ele sublinhado, em caixa ou de outra forma que diferencie um link do restante do texto.
+
+Exemplo de um hiperlink:
+```
+<a href="…">Espeficicação de um ePub</a>
+```
+Exemplo de link em negrito (especificado no CSS):
+```
+a {
+	text-decoration: none;
+	font-weight: bolder;
+	color: rgb(51,102,204);
+}
+```
