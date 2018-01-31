@@ -93,9 +93,9 @@ As seguintes orientações foram extraídas e adaptadas do documento ePub3 Acces
 
 **Semântica**
 **Ordem lógica de leitura**
-O objetivo desta orientação é garantir que a marcação do documento obedeça a ordem lógica de leitura do documento. A ordem lógica recomenda o uso de elementos como <figure> para posicionar imagens com suas legendas e <aside> para conteúdos complementares (não necessariamente apenas laterais).
+O objetivo desta orientação é garantir que a marcação do documento obedeça a ordem lógica de leitura do documento. A ordem lógica recomenda o uso de elementos como ```<figure>``` para posicionar imagens com suas legendas e ```<aside>``` para conteúdos complementares (não necessariamente apenas laterais).
  
-Utilize o elemento <figcaption> para a legenda da figura. Considere que o atributo "alt" tem a função de descrever a imagem para uma pessoa que não consegue enxergar a foto e utiliza leitores de tela para ler o conteúdo. A descrição pode ser feita no elemento <figcaption>. É recomendado que o usuário seja informado que a descrição vem a seguir da imagem, como no exemplo abaixo.
+Utilize o elemento ```<figcaption>``` para a legenda da figura. Considere que o atributo ```alt``` tem a função de descrever a imagem para uma pessoa que não consegue enxergar a foto e utiliza leitores de tela para ler o conteúdo. A descrição pode ser feita no elemento ```<figcaption>```. É recomendado que o usuário seja informado que a descrição vem a seguir da imagem, como no exemplo abaixo.
  
 ```
 <figure>
@@ -107,7 +107,7 @@ Utilize o elemento <figcaption> para a legenda da figura. Considere que o atribu
 ```
  
  **O atributo epub:type**
- Para fazer ebooks acessíveis é necessário considerar que parte do público vai acessar o conteúdo de uma forma não visual, por isso a ordem lógica de leitura deve ser definida na marcação do código. Para facilitar esse trabalho, o EPUB 3 inclui um novo atributo chamado epub:type, que permite que significados mais precisos sejam aplicados às tags genéricas, um processo chamado inflexão semântica.
+ Para fazer ebooks acessíveis é necessário considerar que parte do público vai acessar o conteúdo de uma forma não visual, por isso a ordem lógica de leitura deve ser definida na marcação do código. Para facilitar esse trabalho, o EPUB 3 inclui um novo atributo chamado ```epub:type```, que permite que significados mais precisos sejam aplicados às tags genéricas, um processo chamado inflexão semântica.
  
  O atributo epub:type pode ser utilizado em qualquer elemento HTML:
  
@@ -117,11 +117,11 @@ Utilize o elemento <figcaption> para a legenda da figura. Considere que o atribu
 <section>
 ```
  
- O valor "dedication" usado no exemplo acima não é apenas uma string aleatória, mas é um valor previsível que os sistemas de leitura podem esperar encontrar em publicações.
+ O valor ```dedication``` usado no exemplo acima não é apenas uma string aleatória, mas é um valor previsível que os sistemas de leitura podem esperar encontrar em publicações.
  
-Embora, em teoria, qualquer semântica possa ser aplicada a qualquer elemento, apenas uma certa semântica faz sentido usar em qualquer tag. Marcando um elemento <aside>, por exemplo,  como uma nota de rodapé é apropriado, mas marcar uma <section> como nota de rodapé nem tanto. O Vocabulário de Semântica Estrutural lista os elementos comuns que cada semântica destina-se a ser usada em conjunto para facilitar esse processo (embora existam exceções à regra).
+Embora, em teoria, qualquer semântica possa ser aplicada a qualquer elemento, apenas uma certa semântica faz sentido usar em qualquer tag. Marcando um elemento ```<aside>```, por exemplo,  como uma nota de rodapé é apropriado, mas marcar uma ```<section>``` como nota de rodapé nem tanto. O Vocabulário de Semântica Estrutural lista os elementos comuns que cada semântica destina-se a ser usada em conjunto para facilitar esse processo (embora existam exceções à regra).
 
-Você valor do epub:type não se limita a fazer apenas uma declaração no atributo. É possível fazer a declaração de mais de uma referência, separando cada um deles por espaços:
+Você valor do ```epub:type``` não se limita a fazer apenas uma declaração no atributo. É possível fazer a declaração de mais de uma referência, separando cada um deles por espaços:
 
 ```
 <section epub:type="dedication backmatter">
@@ -129,14 +129,14 @@ Você valor do epub:type não se limita a fazer apenas uma declaração no atrib
 <section>
 ```
  
-Observe que a ordem da semântica não é importante para seu processamento. Entretanto, incluir mais de uma referência semântica pode afetar o estilo do documento. A seguinte regra CSS corresponde ao elemento <section>:
+Observe que a ordem da semântica não é importante para seu processamento. Entretanto, incluir mais de uma referência semântica pode afetar o estilo do documento. A seguinte regra CSS corresponde ao elemento ```<section>```:
  
  ```
  section[epub|type='dedication'] {
    …
 }
 ```
-Uma vez que uma semântica foi definida, a natureza do elemento influencia todo o conteúdo definido nela. Por exemplo, embora o exemplo anterior tenha anexado a semântica de "backmatter" ao elemento que contém "dedication", todas as seções "backmatter" podem ser agrupadas em uma "backmatter" principal da seguinte maneira:
+Uma vez que uma semântica foi definida, a natureza do elemento influencia todo o conteúdo definido nela. Por exemplo, embora o exemplo anterior tenha anexado a semântica de ```backmatter``` ao elemento que contém ```dedication```, todas as seções ```backmatter``` podem ser agrupadas em uma ```backmatter``` principal da seguinte maneira:
 
 ```
 <section epub:type="backmatter">
@@ -152,7 +152,7 @@ Uma vez que uma semântica foi definida, a natureza do elemento influencia todo 
 
 # Declarando o namespace do epub
 
-Ao usar o atributo epub:type em um documento de conteúdo, o namespace "epub" deve ser declarado no elemento que contém o atributo ou em um de seus antecessores. O namespace normalmente é declarado uma vez no elemento html, como no exemplo a seguir:
+Ao usar o atributo ```epub:type``` em um documento de conteúdo, o namespace ```epub``` deve ser declarado no elemento que contém o atributo ou em um de seus antecessores. O namespace normalmente é declarado uma vez no elemento ```<html>```, como no exemplo a seguir:
 
 ```
 <html …
@@ -294,7 +294,7 @@ Ele será aplicado neste código HTML:
    </ol>
 </aside>
 ```
-Para relacionar o arquivo CSS ao código, utilize o elemento "link" da seguinte forma:
+Para relacionar o arquivo CSS ao código, utilize o elemento ```link``` da seguinte forma:
 ```
 <html …>
    <head>
@@ -329,3 +329,114 @@ Para relacionar o arquivo CSS ao código, utilize o elemento "link" da seguinte 
    …
 </html>
 ```
+# Idioma do documento
+Especificar o idioma padrão de um documento - bem como quaisquer alterações no documento, como instâncias de termos de idioma estrangeiro, diálogo ou passagens em outro idioma - ajuda a garantir que as tecnologias de suporte possam renderizar corretamente o texto (por exemplo, para que os caracteres de braille corretos sejam apresentados, ou que uma voz seja capaz de renderizar o idioma usado).
+
+Para definir o idioma padrão para um documento XHTML, os atributos ```lang``` e ```xml:lang``` language devem ser inseridos no elemento html de conteúdo. O código de idioma definido nesses atributos deve coincidir com um dos códigos de idioma especificados em um elemento dc:lang na seção de metadados do documento do pacote.
+
+Quando anexado a elementos dentro do elemento ```<body>```, os atributos identificam o idioma do conteúdo de texto desse elemento (para identificar uma mudança de idioma).
+
+```
+<html … lang="en" xml:lang="en">
+   …
+   <body>
+      …
+      <p>
+         Harsh gargoyle face that warred against me 
+         over our mess of hash of lights in 
+         <span xml:lang="fr" lang="fr">rue 
+         Saint-André-des-Arts</span>. In words of
+         words for words, palabras. Oisin with
+         Patrick. Faunman he met in Clamart woods,
+         brandishing a winebottle.
+         <i xml:lang="fr" lang="fr">C'est 
+         vendredi saint!</i> Murthering Irish.
+         His image, wandering, he met. I mine. I 
+         met a fool i'the forest.
+      </p>
+      …
+   </body>
+</html>
+```
+# Número de páginas
+
+Se um ebook for produzido a partir do mesmo fluxo de trabalho que um documento impresso, os marcadores de paginação de impressão devem ser mantidos no documento. Esses marcadores beneficiam os leitores em ambientes mistos de impressão/digital, como uma sala de aula, pois os números de página permitem um ponto de referência comum entre as duas edições.
+
+Os locais de quebra de página podem ser adicionados à marcação usando tags ```span``` e ```div``` com um atributo de tipo ```epub:type``` para o valor do número da página.
+
+```
+<p>
+   …
+   <span
+         epub:type="pagebreak"
+         id="page24"
+         title="24"/>
+   …
+</p>
+```
+
+
+Quando incluir as referências da página de impressão, os metadados do documento do pacote também devem incluir um elemento ```dc:source``` que identifica a fonte de impressão.
+
+```
+<package…>
+   …
+   <metadata
+      xmlns:dc="http://purl.org/dc/elements/1.1/">
+      …
+      <dc:source id="src-id">
+         urn:isbn:9780375704024
+      </dc:source>
+   </metadata>
+</package>
+```
+
+# Quadros em linha (iframe)
+
+Os quadros em linha (iframe) geralmente se integram bem com as tecnologias assistivas, mas as seguintes considerações de acessibilidade sempre devem ser respeitadas ao usá-las:
+
+* Cada ```iframe``` deve incluir um título explicativo que indique claramente a finalidade do conteúdo incorporado (em um atributo de ```title``` no elemento ```<iframe>```).
+* Ao definir a altura e a largura do ```iframe``` utilize unidades relativas, como porcentagem ou ems, a fim de facilitar o redimensionamento.
+* O deslocamento deve ser definido como automático para que ele ainda possa ser acessado se for maior do que o espaço disponível (especialmente se o usuário redimensionar o conteúdo do ```iframe```).
+* O elemento ```iframe``` deve fornecer conteúdo embutido para sistemas de leitura que não suportem ```iframe``` (por exemplo, um link direto para o arquivo de conteúdo).
+* Se o quadro não contiver conteúdo para o leitor, indique como vazio no atributo ```title```, defina sua propriedade de exibição de CSS como ```display:none```, e altura e largura em 0. Para garantir que os leitores não possam ser tabulados no elemento, defina o atributo ```tabindex``` para ```-1``` .
+
+Exemplo de ```iframe``` acessível
+```
+<iframe
+        href="quiz01.xhtml"
+        title="Quiz 1"
+        class="quiz">
+   Your reading system does not support
+   inline frames. Please follow <a 
+   href="quiz01.xhtml">this link</a> 
+   to open the associated content document.
+</iframe>
+```
+Exemplo de ```iframe``` invisível
+```
+<iframe
+        href="script.xhtml"
+        title="empty"
+        tabindex="-1"
+        height="0"
+        width="0"
+        class="hidden">
+</iframe>
+```
+# Negrito e itálico
+
+Textos em negrito e itálico são freqüentemente usados para meros elementos de estilo, mas eles carregam vários tipos de informações pertinentes ao texto: pontos de ênfase, mudanças de tom ou localização, nomes especiais, etc. A não ser que a marcação semântica correta seja usada para aplicar esta formatação, no entanto, a mesma informação não pode ser transmitida para leitores não visuais.
+
+A lista abaixo descreve como aplicar os vários métodos em HTML5 e CSS para negrito e itálico:
+
+* **```<em>```**:  
+O elemento ```em``` indica que o texto deve ser estressado verbalmente.
+* **```<strong>```**:  
+O elemento ```strong``` indica importância, como quando faz declarações imperativas ou usa palavras-sinal como 'aviso' e 'alerta'.
+* **```<i>```**:  
+O elemento ```i``` é usado quando o uso de itálico indica uma mudança de tom ou voz. Um exemplo fornecido na especificação HTML5 é uma seqüência de sonhos estendidos, mas poderia ser qualquer divergência semelhante da narrativa principal em pensamento ou lembrança. O elemento ```i``` também é usado sempre que há significância semântica por trás da ênfase (por exemplo, as palavras em itálico indicam um termo técnico, palavras estrangeiras, etc.).
+* **```<b>```**:  
+O elemento ```b``` é usado sempre que o negrito transmite significado semântico, semelhante ao uso de ```i``` para marcação semântica (por exemplo, palavras-chave).
+* **```font-style: itálico e font-weight: bold ```**:  
+As propriedades CSS para negrito e itálico devem ser usadas sempre que o uso de negrito e itálico é de apresentação (por exemplo, em títulos e palavras-chave). A formatação CSS não possui semântica, portanto a ênfase não será notada por tecnologias assistivas.
