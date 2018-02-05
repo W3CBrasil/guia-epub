@@ -498,8 +498,221 @@ Exemplo de um hiperlink:
 Exemplo de link em negrito (especificado no CSS):
 ```
 a {
-	text-decoration: none;
+	text-decoration: underline;
 	font-weight: bolder;
 	color: rgb(51,102,204);
 }
+```
+
+## Trabalhos publicados
+Ao incluir uma lista de trabalhos adicionais de um autor (por exemplo, na página de título da série), use listas ordenadas ```<ol>``` ou não ordenadas ```<ul>``` para detalhar as entradas.
+
+Se a lista de trabalhos transmitir informações que se perderiam se reordenadas (por exemplo, uma listagem cronológica por data de publicação), use uma lista ordenada. Se a ordem dos títulos não tiver qualquer significado particular (por exemplo, alfabética), use uma lista desordenada.
+
+Exemplo de uma lista simples de trabalhos publicados
+```
+<html …
+      epub:prefix="daisy:
+      http://www.daisy.org/z3998/2012/vocab/structure/">
+   …
+   <section epub:type="daisy:published-works">
+      <h2>Also by the author</h2>
+      <ul class="works">
+         <li>The Tempest</li>
+         <li>Henry IV, Part 2</li>
+         <li>King Lear</li>
+      </ul>
+   </section>
+```
+Exemplo de uma lista complexa de trabalhos publicados
+```
+<html …
+      epub:prefix="daisy:
+      http://www.daisy.org/z3998/2012/vocab/structure/">
+   …
+   <section epub:type="daisy:published-works">
+      <h2>Also by the author</h2>
+         
+      <section>
+         <h3>Comedies</h3>
+         <ul>
+            <li>The Tempest</li>
+         </ul>
+      </section>
+         
+      <section>
+         <h3>Histories</h3>
+         <ul>
+            <li>Henry IV, Part 2</li>
+         </ul>
+      </section>
+         
+      <section>
+         <h3>Tragedies</h3>
+         <ul>
+            <li>King Lear</li>
+         </ul>
+      </section>
+   </section>
+   …
+</html>
+```
+## Índice
+Embora o documento de navegação do EPUB forneça recursos de navegação para a publicação como um todo, a incorporação de índices dentro do corpo pode facilitar ainda mais a compreensão e a navegação.
+
+Se você incorporar outras tabelas de conteúdo no corpo da sua publicação, tente construí-las da mesma maneira que o documento de navegação - usando o elemento ```<nav>``` e as listas ordenadas ```<ol>```. As listas simplificam o acesso, pois as tecnologias assistivas geralmente fornecem atalhos de teclado para movê-los de forma mais eficaz.
+
+Exemplo de reutilização da navegação do índice no elemento ```<spine>```
+```
+<package …>
+   …
+   <manifest>
+      …
+      <item id="htmltoc"
+      	    properties="nav"
+      	    media-type="application/xhtml+xml"
+      	    href="bk01-toc.xhtml"/>
+      …
+   </manifest>
+   …
+   <spine>
+      …
+      <itemref idref="htmltoc" linear="yes"/>
+      …
+   </spine>
+</manifest>
+```
+
+Exemplo de inserção de um índice no corpo da publicação
+```
+<section epub:type="toc">
+   <h1>Table of Contents</h1>
+   <nav id="pub-toc">
+      <ol class="toc">
+         <li>
+            <a href="ch01.xhtml">1. Introduction</a>
+         </li>
+         <li>
+            <a href="ch02.xhtml">2. Building a 
+               Better EPUB: Fundamental
+               Accessibility</a>
+         </li>
+         <li>
+            <a href="ch03.xhtml">3. It’s Alive:
+               Rich Content Accessibility</a>
+         </li>
+         <li>
+            <a href="ch04.xhtml">4. Conclusion</a>
+         </li>
+      </ol>
+   </nav>
+</section>
+```
+Exemplo de um mini índice no início de uma sessão
+```
+<section>
+   <header>
+      <h2>
+         3. It’s Alive: Rich Content Accessibility
+      </h3>
+      <nav id="ch3-toc">
+         <ol>
+            <li>
+               <a href="#s01">The Sound and 
+               the Fury: Audio and Video</a>
+            </li>
+            <li>
+               <a href="#s02">Talk to Me: 
+               Media Overlays</a>
+            </li>
+            <li>
+               <a href="#s03">Tell It Like 
+               It Is: Text-to-Speech (TTS)</a>
+            </li>
+            <li>
+               <a href="#s04">The Coded Word:
+               Scripted Interactivity</a>
+            </li>
+            <li>
+               <a href="#s05">A Little Help:
+               WAI-ARIA</a>
+            </li>
+            <li>
+               <a href="#s06">A Blank Slate:
+               Canvas</a>
+            </li>
+         </ol>
+      </nav>
+   </header>
+   …
+</section>
+```
+
+## Listas de ilustrações
+Para facilitar a navegação do conteúdo, as publicações devem incluir uma lista para todas as ilustrações que eles contêm. Sem esses links rápidos, muitas vezes não há um caminho fácil para os leitores localizarem as ilustrações novamente. Se esse recurso não está disponível os leitores devem navegar pelo conteúdo do livro até chegarem ao local.
+
+O documento de navegação EPUB pode ser usado para fornecer esta funcionalidade. Uma lista de ilustrações pode ser definida do mesmo modo que o índice, mas usando um elemento de navegação com um atributo de tipo ```epub:type``` com o valor ```loi``` (veja o Exemplo 1). O ```loi nav``` deve conter apenas uma única lista ordenada de entradas, com cada entrada ligando a uma figura ou ilustrações.
+
+Observe que, embora este tipo de auxílio de navegação não seja formalmente definido na especificação do EPUB, os documentos de navegação foram extensíveis para esse fim. Ao criar uma ```loi nav```, você também deve incorporar o documento de navegação como conteúdo dentro da publicação, já que sistemas de leitura podem não fornecer acesso especializado a ele.
+
+Exemplo de uma lista de ilustrações
+```
+<nav epub:type="loi">
+   <h2>List of Illustrations</h2>
+   <ol>
+      <li>
+         <a href="ch01.html#fig01">Figure 1.1</a>
+      </li>
+      <li>
+         <a href="ch01.html#fig02">Figure 1.2</a>
+      </li>
+      …
+   </ol>
+</nav>
+```
+Referenciando imagens por marcas na navegação
+O ```landmarks nav``` pode referenciar elementos no mesmo arquivousando um atributo ```href``` que faz referência ao ```ID``` da lista:
+```
+<nav epub:type="loi" id="illustrations">
+   …
+</nav>
+<nav epub:type="landmarks">
+   …
+   <li>
+      <a href="#illustrations" epub:type="loi">List of 
+      Illustrations</a>
+   </li>
+   …
+</nav>
+```
+## Listas de tabelas
+Para facilitar a navegação do conteúdo, as publicações devem incluir uma lista para todas as tabelas que eles contêm. Sem esses links rápidos, geralmente não há um caminho fácil para os leitores localizarem as tabelas novamente. Eles têm que navegar pelo conteúdo do livro até chegarem ao local.
+
+A lista de tabelas segue a mesma orientação utilizada para criar a lista de imagens.
+
+Exemplo de uma lista de tabelas
+```
+<nav epub:type="lot">
+   <h2>List of Tables</h2>
+   <ol>
+      <li><a href="ch01.html#tbl01">Table 1</a></li>
+      <li><a href="ch01.html#tbl02">Table 2</a></li>
+      …
+   </ol>
+</nav>
+```
+Referenciando tabelas por marcas na navegação
+O ```landmarks nav``` pode referenciar elementos no mesmo arquivousando um atributo ```href``` que faz referência ao ```ID``` da lista:
+```
+<nav epub:type="lot" id="tables">
+   …
+</nav>
+<nav epub:type="landmarks">
+   …
+   <li>
+      <a href="#tables" epub:type="lot">List of
+      Tables</a>
+   </li>
+   …
+</nav>
 ```
