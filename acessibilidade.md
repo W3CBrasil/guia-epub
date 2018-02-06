@@ -716,3 +716,157 @@ O ```landmarks nav``` pode referenciar elementos no mesmo arquivousando um atrib
    …
 </nav>
 ```
+## Seções
+O elemento ```<section>``` é usado para encapsular seções de conteúdo primário e estabelecer a hierarquia estrutural da publicação. Claramente, agrupar e identificar conteúdos permite uma melhor navegação por parte de qualquer pessoa que lê usando uma tecnologia assistiva.
+
+Um atributo ```epub:type``` deve ser inserido em cada seção para indicar a natureza específica do conteúdo, quando aplicável. Veja o [Vocabulário de semântica estrutural EPUB3](https://idpf.github.io/epub-vocabs/structure/) para a lista de valores permitidos que podem ser usados com o atributo.
+
+Quando o atributo epub:type não é especificado, uma natureza genérica de seção/subseção é assumida com base no nível de aninhamento.
+
+Uma seção não deve ter mais de um título.
+
+Se uma seção não tiver um título, considere incluir um atributo de ```aria-label``` na seção para identificar seu objetivo.
+Exemplo de sessão definida por cabeçalhos
+```
+<section epub:type="chapter" id="c01">
+   <h1 id="c01h01">Chapter 1. Loomings.</h1>
+   <p>Call me Ishmael. … </p>
+   …
+</section>
+```
+Exemplo de sessão definida por atributos
+Atributo title
+```
+<section epub:type="chapter" title="chapter" id="c01">
+   <p>It was a dark and stormy night … </p>
+   …
+</section>
+```
+Atributo aria-label
+```
+<section epub:type="chapter" aria-label="chapter" id="c01">
+   <p>It was a dark and stormy night … </p>
+   …
+</section>
+```
+No caso de sessões mais complexas ou que necessitam ser separadas, a hierarquia de cabeçalhos deve ser seguida.
+```
+<body>
+   <section epub:type="part">
+      <h1>Part I</h1>
+      <section epub:type="chapter">
+         <h2>Chapter I</h2>
+      </section
+   </section>
+</body>
+```
+## Cabeçalhos
+Os cabeçalhos continuam a ser um dos principais meios de navegação para usuários de tecnologia assistiva.
+
+Cada seção deve ter um título numerado (por exemplo, ```<h1>```) que reflete seu nível na hierarquia de documentos, pois os títulos numerados permitem que tecnologias assistivas, independentemente do suporte para HTML5, navegem na estrutura do documento.
+
+Cada elemento de cabeçalho deve representar um único cabeçalho. Não quebre um cabeçalho em tags separadas para formatação visual. Se você precisa incluir subtítulos, incorporá-los no título principal ou incluí-los em um parágrafo subseqüente, use uma tag de cabeçalho para encapsular o título completo (o Exemplo 2 mostra ambos os exemplos de uso).
+
+Se uma seção de texto não tiver um título, inclua um título em um atributo de ```aria-label``` no elemento envolvente. As tecnologias assistivas anunciarão este rótulo e alertarão os usuários de que uma nova seção está começando.
+
+> **Nota:**
+> Não use elementos de cabeçalho dentro da ```<figure>```, ```<blockquote>``` e outros elementos raiz de seção HTML5. Embora esses recursos possam ter cabeçalhos, o uso de elementos de cabeçalho forçará os usuários a navegar por eles para encontrar a próxima seção.
+
+Evite utilizar múltiplos ```<h1>``` na ublicação. Sistemas de leitura e tecnologias assistivas não suportam o algoritmo de estrutura de tópicos definido em HTML5. Se você usa um título ```<h1>``` para cada seção, todos aparecerão como títulos de nível superior para um usuário, impedindo sua capacidade de navegar.
+
+Exemplo de cabeçalhos numerados
+```
+<section epub:type="division">
+  <h1>Book One: 1805</h1>
+      <section epub:type="chapter">
+         <h2>Chapter 1</h2>
+```
+Exemplo de cabeçalhos e subtítulos
+```
+<section epub:type="chapter">
+   <h1><span epub:type="title">ORIGIN OF THE WORLD.—FIRST DYNASTY.</span>
+   <span epub:type="subtitle">URANUS AND GÆA. (Cœlus and Terra.)</span></h1>
+```
+Utilizando o elemento ```<header>```
+```
+<section epub:type="chapter">
+   <header>
+      <h1>ORIGIN OF THE WORLD.—FIRST DYNASTY.</h1>
+      <p epub:type="subtitle">URANUS AND GÆA. (Cœlus and Terra.)</p>
+   </header>
+```
+Sessões sem cabeçalhos
+Utilizando o atributo ```title``` 
+```
+<section epub:type="preamble" title="preamble">
+   <p>
+      How these papers have been placed in sequence 
+      will be made manifest in the reading of them.
+      …
+   </p>
+</section>
+```
+Utilizando o atributo ```aria-label``` 
+```
+<section epub:type="preamble" aria-label="preamble">
+```
+
+> ## Tabelas
+> Fazer a revisão do documento https://idpf.github.io/a11y-guidelines/content/xhtml/tables.html
+
+## Listas
+As listas são muitas vezes ignoradas como um recurso de acessibilidade, mas a capacidade de se mover de forma rápida e eficaz através de longas listas é uma necessidade chave de leitura. 
+
+Para facilitar a navegação das listas, marque sempre os itens no conjunto usando o elemento de lista ordenada ```<ol>``` ou não ordenado ```<ul>``` apropriada. Não use elementos ```<br>``` para exibir itens visualmente em linhas separadas ou use técnicas de estilo para configurar a aparência visual de uma lista, pois impedirá a navegação.
+
+Usar o tipo de lista correta também é importante, pois pode ser a única orientação para o leitor se a ordem dos itens é significativa. 
+
+O elemento da lista de definições ```<dl>``` serve para listas de nomes/valores. Estes podem incluir dicionários, glossários, perguntas frequentes e similares. O elemento não deve ser usado para diálogo de personagens, conforme observado na especificação HTML5. Repetir nomes de personagens em elementos ```<dt>```, puramente para indicar quem está falando, quebra esta semântica. Embora a formatação automática que acompanha o tipo de lista pode caber em certos formatos, como peças, cada elemento ```<dt>``` deve definir um valor exclusivo.
+
+Os elementos da lista não devem ser usados para propósitos puramente de apresentação (por exemplo, usando listas ```<dl>``` para fazer cabeçalhos em negrito com parágrafos recuados).
+
+Exemplo de lista desordenada
+```
+<ul>
+   <li>Credit, consumer, 164</li>
+   <li>Cross-functional contact, 10-11</li>
+   <li>Culture
+      <ul>
+         <li>buyer behavior and, 85</li>
+         <li>defined, 85, 98, 118</li>
+         …
+      </ul>
+   </li>
+   …
+</ul>
+```
+Exemplo de uma lista de definição
+```
+<dl>
+   <dt><def>Exchange function</def></dt>
+   <dd>
+      Sales of the product to the various members 
+      of the channel of distribution.
+   </dd>
+   <dt><def>Physical distribution function</def></dt>
+   <dd>
+      Moves the product through the exchange 
+      channel, along with title and ownership.
+   </dd>
+   <dt><def>Marketing channel</def></dt>
+   <dd>
+      Sets of independent organizations involved
+      in the process of making a product or 
+      service available for use or consumption 
+      as well as providing a payment mechanism 
+      for the provider.
+   </dd>
+   …
+</dl>
+```
+Padrões e referências de conformidade
+HTML5 — [O elemento ```<ol>```](http://www.w3.org/TR/html5/grouping-content.html#the-ol-element)
+HTML5 — [O elemento  ```<ul>```](http://www.w3.org/TR/html5/grouping-content.html#the-ul-element)
+HTML5 — [O elemento ```<dl>```](http://www.w3.org/TR/html5/grouping-content.html#the-dl-element)
+WCAG 2.0 — [H40: Utilizando listas de definição](http://www.w3.org/TR/WCAG20-TECHS/H40.html)
+WCAG 2.0 — [H48: Utilizando ```<ol>```, ```<ul>``` e ```<dl>``` para listas ou grupo de links](http://www.w3.org/TR/WCAG20-TECHS/H48.html)
