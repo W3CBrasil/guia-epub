@@ -871,6 +871,25 @@ Padrões e referências de conformidade
 * WCAG 2.0 — [H40: Utilizando listas de definição](http://www.w3.org/TR/WCAG20-TECHS/H40.html)
 * WCAG 2.0 — [H48: Utilizando ```<ol>```, ```<ul>``` e ```<dl>``` para listas ou grupo de links](http://www.w3.org/TR/WCAG20-TECHS/H48.html)
 
+## Descrições
+Há muitas razões pelas quais a descrição do conteúdo aumenta sua acessibilidade para todos os leitores. Embora muitas vezes se considere útil apenas para leitores não visuais, as descrições facilitam a compreensão e fornecem contexto para os leitores com uma ampla gama de necessidades. 
+
+Os hiperlinks simples são a maneira mais acessível de fornecer um link para uma descrição.
+```
+<figura>
+    <img src = "crime-map.jpg" alt = "Crime em Gotham City">
+    <a href="crime-desc.xhtml"> Descrição </a>
+</ figura>
+```
+A vantagem principal dos hiperlinks é que eles estão expostos a todos os usuários, ao contrário do atributo ```aria-describedby``` descrito na próxima seção. A principal desvantagem é que eles são sempre visíveis, e os editores geralmente são impedidos de adicionar qualquer conteúdo visível por seus acordos com os autores.
+
+Observe que um hiperlink nem sempre precisa fazer referência a uma descrição em outro documento. As descrições podem ser incluídas no final de uma seção, como notas de rodapé.
+
+O atributo ```aria-describedby```  pode ser usado para adicionar uma descrição a qualquer elemento HTML5, não apenas ```<img>```. Esse atributo não é bem suportado e pode não é útil para descrições de imagens complexas, pois o texto que ele faz referência é resumido a uma seqüência de texto simples.
+
+Referências e padrões de conformidade
+* WAI - [WAI-ARIA 1.0 - ```aria-describedby```](http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby)
+
 ## Figuras
 O elemento ```<figure>``` do HTML5 permite que uma tecnologia assistiva ignore o conteúdo secundário, permitindo que os leitores continuem a ler a narrativa primária ininterrupta. Como as figuras são intercaladas dentro do corpo, como em elementos ```<aside>```, o leitor seria constantemente interrompido nos pontos em que elas ocorressem.
 
@@ -933,6 +952,6 @@ Note that the table caption element should not be used when a table is included 
 </figure>
 ```
 Padrões e referências de conformidade
-HTML5 — [O elemento ```<figure>```](http://www.w3.org/TR/html5/grouping-content.html#the-figure-element)
-HTML5 — [O elemento ```<figcaption>```](http://www.w3.org/TR/html5/grouping-content.html#the-figcaption-element)
-WCAG 2.0 — [G73: Forneça uma descrição linga em outro local com um link para ele próximo ao conteúdo não textual](http://www.w3.org/TR/WCAG20-TECHS/G73.html)
+* HTML5 — [O elemento ```<figure>```](http://www.w3.org/TR/html5/grouping-content.html#the-figure-element)
+* HTML5 — [O elemento ```<figcaption>```](http://www.w3.org/TR/html5/grouping-content.html#the-figcaption-element)
+* WCAG 2.0 — [G73: Forneça uma descrição linga em outro local com um link para ele próximo ao conteúdo não textual](http://www.w3.org/TR/WCAG20-TECHS/G73.html)
