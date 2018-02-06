@@ -864,7 +864,7 @@ Exemplo de uma lista de definição
    …
 </dl>
 ```
-Padrões e referências de conformidade
+Referências e padrões de conformidade
 * HTML5 — [O elemento ```<ol>```](http://www.w3.org/TR/html5/grouping-content.html#the-ol-element)
 * HTML5 — [O elemento  ```<ul>```](http://www.w3.org/TR/html5/grouping-content.html#the-ul-element)
 * HTML5 — [O elemento ```<dl>```](http://www.w3.org/TR/html5/grouping-content.html#the-dl-element)
@@ -951,7 +951,80 @@ Note that the table caption element should not be used when a table is included 
    </table>
 </figure>
 ```
-Padrões e referências de conformidade
+Referências e padrões de conformidade
 * HTML5 — [O elemento ```<figure>```](http://www.w3.org/TR/html5/grouping-content.html#the-figure-element)
 * HTML5 — [O elemento ```<figcaption>```](http://www.w3.org/TR/html5/grouping-content.html#the-figcaption-element)
 * WCAG 2.0 — [G73: Forneça uma descrição linga em outro local com um link para ele próximo ao conteúdo não textual](http://www.w3.org/TR/WCAG20-TECHS/G73.html)
+
+## Imagens
+Imagens que são fundamentais para a compreensão de uma publicação devem incluir sempre uma alternativa de texto em seu atributo alt. No caso de imagens complexas, uma descrição detalhada também deve ser adicionada.
+
+Se a imagem for puramente decorativa, o atributo ```alt``` deve ficar vazio. Para melhorar, a acessibilidade, um atributo de ARIA ```role``` com o valor ```presentation``` também deve ser anexado.
+
+> **Nota**:
+> Se uma imagem é importante para a publicação, mas não é obrigatória para ser lida no ponto de inserção (ou seja, não é parte da ordem de leitura lógica), use o elemento ```<figure>``` para anexá-la.
+
+Exemplo de imagem simples significativa (não é necessária nenhuma descrição)
+```
+<img
+     src="covers/9781449328030_lrg.jpg"
+     alt="First Edition" />
+```
+
+Exemplo de imagem complexa significativa (descrição é necessária)
+```
+<figure>
+   <img
+        id="fig01"
+        src="graphics/water-cycle.jpg"
+        aria-describedby="water-cycle-desc"
+        alt="The hydrologic cycle, showing the 
+          circular nature of the process as water 
+          evaporates from a body of water and 
+          eventually returns to it"/>
+   <figcaption>
+      The hydrologic cycle
+      <a href="#water-cycle-desc">
+         <img src="images/desc.gif"
+             alt="Click for description"/>
+      </a>
+   </figcaption>
+</figure>
+…
+<aside id="water-cycle-desc">
+   <p>
+      Figure 1 - The diagram shows the processes
+      of evaporation, condensation, 
+      evapotranspiration, water storage 
+      in ice and snow, and precipitation. 
+      A large body of water …
+   </p>
+   <p><a role="doc-backlink" href="#fig01">
+      <img src="#fig01" alt="Return to figure"/>
+      </a></p>
+</aside>
+```
+Exemplo de imagem decorativa
+```
+<img
+     src="graphics/gothic-border.png"
+     role="presentation"
+     alt=""/>
+```
+Referências e padrões de conformidade
+* HTML5 - [O elemento ```<img>```](http://www.w3.org/TR/html5/embedded-content-0.html#the-img-element)
+* WCAG 2.0 - [H37: usando atributo ```alt``` em elementos ```<img>```](http://www.w3.org/TR/WCAG20-TECHS/H37.html)
+* WCAG 2.0 - [H67: usando texto alternativo nulo e nenhum atributo de título em elementos ```<img>``` para imagens que a Tecnologia Assistiva deve ignorar](http://www.w3.org/TR/WCAG20-TECHS/H67.html)
+* WCAG 2.0 - [G15: usando uma ferramenta para garantir que o conteúdo não viole o limite geral do flash ou o limiar de flash vermelho](http://www.w3.org/TR/WCAG20-TECHS/G15.html)
+* WCAG 2.0 - [G19: garantindo que nenhum componente do conteúdo pisque mais de três vezes em qualquer período de 1 segundo](http://www.w3.org/TR/WCAG20-TECHS/G19.html)
+* WCAG 2.0 - [G73: fornecendo uma descrição longa em outro local com um link que seja imediatamente adjacente ao conteúdo não-textual](http://www.w3.org/TR/WCAG20-TECHS/G73.html)
+* WCAG 2.0 - [G74: fornecendo uma descrição longa no texto perto do conteúdo não-textual, com uma referência à localização da descrição longa na breve descrição](http://www.w3.org/TR/WCAG20-TECHS/G74.html)
+* WCAG 2.0 - [G92: fornecendo uma descrição longa para conteúdo que não seja de texto que atende o mesmo propósito e apresenta a mesma informação](http://www.w3.org/TR/WCAG20-TECHS/G92.html)
+* WCAG 2.0 - [G94: Fornecer alternativas de texto curto para conteúdo que não seja de texto que tenha o mesmo propósito e apresenta a mesma informação que o conteúdo não-textual](http://www.w3.org/TR/WCAG20-TECHS/G94.html)
+* WCAG 2.0 - [G100: fornecendo uma alternativa de texto curto, que é o nome aceito ou um nome descritivo do conteúdo não-textual](http://www.w3.org/TR/WCAG20-TECHS/G100.html)
+* WCAG 2.0 - [G103: Fornecer ilustrações, imagens e símbolos visuais para ajudar a explicar ideias, eventos e processos](http://www.w3.org/TR/WCAG20-TECHS/G103.html)
+* WCAG 2.0 - [G111: usando cores e padrões](http://www.w3.org/TR/WCAG20-TECHS/G111.html)
+* WCAG 2.0 - [C9: usando CSS para incluir imagens decorativas](http://www.w3.org/TR/WCAG20-TECHS/C9.html)
+* WCAG 2.0 - [C18: usando margem CSS e regras de preenchimento em vez de imagens de espaçador para design de layout](http://www.w3.org/TR/WCAG20-TECHS/C18.html)
+* WCAG 2.0 - [C30: Usando CSS para substituir texto com imagens de texto e fornecendo controles de interface de usuário para alternar
+Adicional](http://www.w3.org/TR/WCAG20-TECHS/C30.html)
