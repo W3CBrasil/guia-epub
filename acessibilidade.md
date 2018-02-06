@@ -870,3 +870,69 @@ Padrões e referências de conformidade
 * HTML5 — [O elemento ```<dl>```](http://www.w3.org/TR/html5/grouping-content.html#the-dl-element)
 * WCAG 2.0 — [H40: Utilizando listas de definição](http://www.w3.org/TR/WCAG20-TECHS/H40.html)
 * WCAG 2.0 — [H48: Utilizando ```<ol>```, ```<ul>``` e ```<dl>``` para listas ou grupo de links](http://www.w3.org/TR/WCAG20-TECHS/H48.html)
+
+## Figuras
+O elemento ```<figure>``` do HTML5 permite que uma tecnologia assistiva ignore o conteúdo secundário, permitindo que os leitores continuem a ler a narrativa primária ininterrupta. Como as figuras são intercaladas dentro do corpo, como em elementos ```<aside>```, o leitor seria constantemente interrompido nos pontos em que elas ocorressem.
+
+O elemento ```<figure>``` pode ser usado para encapsular imagens, tabelas, fragmentos de código e outros conteúdos com uma legenda relacionada, descrição e/ou elementos de conteúdo associados. O elemento só deve ser usado para conteúdo secundário que pode ser lido separadamente da narrativa principal.
+
+Ser capaz de determinar programaticamente a legenda de uma figura é outra característica útil introduzida no HTML5. Como as legendas são freqüentemente colocadas sob o conteúdo da figura, os leitores no passado muitas vezes não tiveram contexto para a figura até chegar ao texto descritivo que seguiu a imagem ou a tabela.
+
+O elemento ```<figcaption>``` agora pode ser usado para marcar a legenda. Esse elemento deve ser o primeiro ou o último na figura a ser válido para a definição HTML5.
+
+Exemplo de imagem com legenda e descrição
+```
+<figure>
+   <img src="images/blob.jpeg" alt="the blob"
+           aria-describedby="img01-desc"/>
+   <figcaption>
+      Figure 3.7 — The blob is digesting Steve 
+      McQueen in this unreleased ending to the 
+      classic movie.
+      <aside class="hidden id="img01-desc">
+         <p>
+            In the photo, Steve McQueen can be seen
+            floating within the gelatinous body of 
+            the blob as it moves down the main
+            street …
+         </p>
+      </aside>
+   </figcaption>
+</figure>
+```
+Exemplo de imagem com descrição em link
+```
+<figure>
+   <p><a href="blob-desc.xhtml">Description</a></p>
+   <img src="images/blob.jpeg" alt="the blob"/>
+   <figcaption>
+      Figure 3.7 — The blob is digesting Steve 
+      McQueen in this unreleased ending to the 
+      classic movie.
+   </figcaption>
+</figure>
+```
+Tabela com descrição utilizando ```<figcaption>```
+Note that the table caption element should not be used when a table is included in a figure. Including both a figcaption and caption will cause both to be rendered.
+```
+<figure>
+   <figcaption>
+      Characteristics with positive and 
+      negative sides.
+      <aside class="hidden" id="tbl01-summary">
+         <p>Summary</p>
+         <p>
+            Characteristics are given 
+            in the second column…
+         </p>
+      </aside>
+   </figcaption>
+   <table aria-describedby="tbl01-summary">
+      …
+   </table>
+</figure>
+```
+Padrões e referências de conformidade
+HTML5 — [O elemento ```<figure>```](http://www.w3.org/TR/html5/grouping-content.html#the-figure-element)
+HTML5 — [O elemento ```<figcaption>```](http://www.w3.org/TR/html5/grouping-content.html#the-figcaption-element)
+WCAG 2.0 — [G73: Forneça uma descrição linga em outro local com um link para ele próximo ao conteúdo não textual](http://www.w3.org/TR/WCAG20-TECHS/G73.html)
