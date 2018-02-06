@@ -865,8 +865,8 @@ Exemplo de uma lista de definição
 </dl>
 ```
 Padrões e referências de conformidade
-HTML5 — [O elemento ```<ol>```](http://www.w3.org/TR/html5/grouping-content.html#the-ol-element)
-HTML5 — [O elemento  ```<ul>```](http://www.w3.org/TR/html5/grouping-content.html#the-ul-element)
-HTML5 — [O elemento ```<dl>```](http://www.w3.org/TR/html5/grouping-content.html#the-dl-element)
-WCAG 2.0 — [H40: Utilizando listas de definição](http://www.w3.org/TR/WCAG20-TECHS/H40.html)
-WCAG 2.0 — [H48: Utilizando ```<ol>```, ```<ul>``` e ```<dl>``` para listas ou grupo de links](http://www.w3.org/TR/WCAG20-TECHS/H48.html)
+* HTML5 — [O elemento ```<ol>```](http://www.w3.org/TR/html5/grouping-content.html#the-ol-element)
+* HTML5 — [O elemento  ```<ul>```](http://www.w3.org/TR/html5/grouping-content.html#the-ul-element)
+* HTML5 — [O elemento ```<dl>```](http://www.w3.org/TR/html5/grouping-content.html#the-dl-element)
+* WCAG 2.0 — [H40: Utilizando listas de definição](http://www.w3.org/TR/WCAG20-TECHS/H40.html)
+* WCAG 2.0 — [H48: Utilizando ```<ol>```, ```<ul>``` e ```<dl>``` para listas ou grupo de links](http://www.w3.org/TR/WCAG20-TECHS/H48.html)
