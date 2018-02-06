@@ -104,6 +104,9 @@ Utilize o elemento ```<figcaption>``` para a legenda da figura. Considere que o 
    </figcaption>
 </figure>
 ```
+ Referências e padrões de conformidade
+* EPUB 3 — [O atributo ```epub:type```](http://idpf.org/epub3/latest/contentdocs#sec-xhtml-content-type-attribute)
+* WCAG 2.0 — [H88: Utilizar HTML conforme a especificação](http://www.w3.org/TR/WCAG20-TECHS/H88.html)
  
 ## O atributo epub:type
  Para fazer ebooks acessíveis é necessário considerar que parte do público vai acessar o conteúdo de uma forma não visual, por isso a ordem lógica de leitura deve ser definida na marcação do código. Para facilitar esse trabalho, o EPUB 3 inclui um novo atributo chamado ```epub:type```, que permite que significados mais precisos sejam aplicados às tags genéricas, um processo chamado inflexão semântica.
@@ -1028,3 +1031,45 @@ Referências e padrões de conformidade
 * WCAG 2.0 - [C18: usando margem CSS e regras de preenchimento em vez de imagens de espaçador para design de layout](http://www.w3.org/TR/WCAG20-TECHS/C18.html)
 * WCAG 2.0 - [C30: Usando CSS para substituir texto com imagens de texto e fornecendo controles de interface de usuário para alternar
 Adicional](http://www.w3.org/TR/WCAG20-TECHS/C30.html)
+
+## Áudio
+Ao incluir clipes de áudio, assegure-se de que os controles do sistema nativo de leitura sejam ativados por padrão (ou seja, configurando o atributo ```controls``` no elemento ```<audio>```). Esta prática garante que o controle seja acessível, mesmo que o script não esteja disponível. Se os controles personalizados forem fornecidos e suportados pelo sistema de leitura, os controles nativos podem ser desabilitados pelo JavaScript.
+
+Embora o elemento ```<audio>``` permita o acesso de conteúdo descendente, esse conteúdo não se destina a servir como uma alternativa acessível. Só está disponível para o leitor se o elemento de áudio não for suportado pelo sistema de leitura, que normalmente ocorre apenas nos sistemas de leitura EPUB 2.
+
+Os seguintes métodos para tornar o conteúdo de áudio acessível são recomendados na especificação HTML5:
+
+* Fornecer navegação usando o elemento ```<track>```.
+* Fornecer um link para uma transcrição.
+* Se as legendas ou um vídeo de lingua de sinais estiverem disponíveis, o elemento de vídeo pode ser usado para reproduzir de forma síncrona o clipe.
+
+Exemplo de ativação dos controles padrão do sistema de leitura
+```
+<audio src="audio/clip01.mp3" controls="controls"/>
+```
+Exemplo de inserção de transcrição do áudio
+```
+<div>
+   <audio src="audio/01.mp3" controls="controls"/>
+   <a href="transcript01.html">Transcript</a>
+</div>
+```
+Exemplo de inserção de uma mensagem de retorno de erro
+```
+<audio src="audio/clip12.mp3" controls="controls">
+   <div class="err">
+      <p>
+         Sorry, it appears your system 
+         does not support audio playback.
+      </p>
+   </div>
+</audio>
+```
+
+Referências e padrões de conformidade
+* HTML5 - [O elemento ```<audio>```](http://www.w3.org/TR/html5/embedded-content-0.html#the-audio-element)
+* HTML5 - [O elemento ```<track>```](http://www.w3.org/TR/html5/embedded-content-0.html#the-track-element)
+* WCAG 2.0 - [G78: fornecendo uma segunda faixa de áudio selecionável pelo usuário que inclui descrições de áudio](http://www.w3.org/TR/WCAG20-TECHS/G78.html)
+* WCAG 2.0 - [G81: Fornecer um vídeo sincronizado do intérprete de lingua de sinais que pode ser exibido em uma janela/viewport diferente ou sobreposto na imagem pelo tocador](http://www.w3.org/TR/WCAG20-TECHS/G81.html)
+* WCAG 2.0 - [G87: Fornecendo legendas](http://www.w3.org/TR/WCAG20-TECHS/G87.html)
+* WCAG 2.0 - [G93: fornecendo legendas abertas (sempre visíveis)](http://www.w3.org/TR/WCAG20-TECHS/G93.html)
