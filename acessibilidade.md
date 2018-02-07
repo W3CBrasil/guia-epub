@@ -1073,3 +1073,80 @@ Referências e padrões de conformidade
 * WCAG 2.0 - [G81: Fornecer um vídeo sincronizado do intérprete de lingua de sinais que pode ser exibido em uma janela/viewport diferente ou sobreposto na imagem pelo tocador](http://www.w3.org/TR/WCAG20-TECHS/G81.html)
 * WCAG 2.0 - [G87: Fornecendo legendas](http://www.w3.org/TR/WCAG20-TECHS/G87.html)
 * WCAG 2.0 - [G93: fornecendo legendas abertas (sempre visíveis)](http://www.w3.org/TR/WCAG20-TECHS/G93.html)
+
+## Vídeo
+Ao incluir clipes de vídeo, assegure-se de que os controles do sistema nativo de leitura sejam ativados por padrão (ou seja, configurando o atributo ```controls``` no elemento ```<video>```). Esta prática garante que o controle seja acessível, mesmo que o script não esteja disponível. Se os controles personalizados forem fornecidos e suportados pelo sistema de leitura, os controles nativos podem ser desabilitados pelo JavaScript.
+
+Embora o elemento de vídeo permita o conteúdo descendente, esse conteúdo não se destina a servir como uma alternativa acessível. Só está disponível para o leitor se o elemento de vídeo não for suportado pelo sistema de leitura, o que geralmente ocorre apenas nos sistemas de leitura EPUB 2.
+
+Os seguintes métodos para tornar o conteúdo de vídeo acessível são recomendados na especificação HTML5:
+
+* Usar o elemento ```<track>``` para incluir legendas, legendas e descrições.
+* Incorpore legendas diretamente no vídeo.
+* Forneça navegação por cena usando o elemento ```<track>```.
+* Forneça um link para uma transcrição.
+
+O elemento de ```<video>``` também inclui o atributo ```poster``` para permitir que uma imagem padrão seja configurada para exibição enquanto nenhum dado estiver disponível. Atualmente, não existe nenhuma maneira de descrever esta imagem, no entanto, textos de retorno (fallback) são recomendados.
+
+O acordo sobre o suporte universal para um codec e um contêiner de vídeo não pôde ser alcançado em HTML5 e é uma questão similar para EPUB 3. Embora a especificação EPUB 3 permita tecnicamente qualquer formato (sem retorno), o IDPF recomenda um ou ambos os formatos MP4 e WebM. Embora isso não pareça ser uma questão de acessibilidade, considere que isso significa que muitos outros leitores podem estar confiando em recursos que você pode antever antecipadamente.
+
+Example 1 — Enabling native controls with the controls attribute
+<video
+   src="video/the_general.webm"
+   controls="controls">
+   …
+</video>
+Incluindo mais de uma opção de vídeo usando o elemento de ```<source>```
+```
+<video controls="controls">
+   <source
+       src="video/the_general.webm"
+       type="video/webm"/>
+   <source
+       src="video/the_general.mp4"
+       type="video/mp4"/>
+   …
+</video>
+```
+Incluindo faixas cronometradas
+```
+<video controls="controls">
+       src="video/big-hollywood-blockbuster.mp4"
+       controls="controls">
+   <track
+       kind="subtitles"
+       src="subtitles.en.vtt"
+       srclang="en"
+       label="English"/>
+   <track
+       kind="captions"
+       src="captions.en.vtt"
+       srclang="en"
+       label="English"/>
+</video>
+```
+Incluindo uma imagem de fundo ao vídeo
+```
+<video
+   src="video/the_general.mp4"
+   poster="graphics/the_general.jpg"
+   controls="controls">
+   …
+</video>
+```
+Incluindo uma mensagem de erro
+```
+<video
+       src="video/the_general.mp4"
+       controls="controls">
+   …
+   <div class="err">
+      <p>
+         Sorry, it appears your system 
+         either does not support video 
+         playback or cannot play the 
+         MP4 format provided.
+      </p>
+   </div>
+</video>
+```
