@@ -1150,3 +1150,14 @@ Incluindo uma mensagem de erro
    </div>
 </video>
 ```
+
+
+Referências e padrões de conformidade
+* HTML5 - [O elemento ```<video>```](http://www.w3.org/TR/html5/embedded-content-0.html#the-video-element)
+* HTML5 - [O elemento ```<track>```](http://www.w3.org/TR/html5/embedded-content-0.html#the-track-element)
+* WCAG 2.0 - [G15: usando uma ferramenta para garantir que o conteúdo não viole o limite geral do flash ou o limiar de flash vermelho](http://www.w3.org/TR/WCAG20-TECHS/G15.html)
+* WCAG 2.0 - [G19: garantindo que nenhum componente do conteúdo pisque mais de três vezes em qualquer período de 1 segundo](http://www.w3.org/TR/WCAG20-TECHS/G19.html)
+* WCAG 2.0 - [G78: fornecendo uma segunda faixa de áudio selecionável pelo usuário que inclui descrições de áudio](http://www.w3.org/TR/WCAG20-TECHS/G78.html)
+* WCAG 2.0 - [G81: Fornecer um vídeo sincronizado com intérprete de lingu de sinais que pode ser exibido em uma janela/viewport diferente ou sobreposto na imagem pelo tocador de mídia](http://www.w3.org/TR/WCAG20-TECHS/G81.html)
+* WCAG 2.0 - [G87: Fornecendo legendas](http://www.w3.org/TR/WCAG20-TECHS/G87.html)
+* WCAG 2.0 - [G93: fornecendo legendas abertas (sempre visíveis)](http://www.w3.org/TR/WCAG20-TECHS/G93.html)
