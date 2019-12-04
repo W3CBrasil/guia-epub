@@ -1,4 +1,4 @@
-**Metadados**
+#Metadados
 
 **dc:identifier:** Refere-se ao identificador associado da publicação. Pode ser um UUID, DOI ou ISBN.   
 
@@ -22,7 +22,7 @@
 ```html
 <meta property="dcterms:modified">2011-01-21T21:00:00Z</meta>
 ```
-Exemplo:
+*Exemplo:*
 ```html
  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
      	<dc:identifier id="isbn-id">urn:isbn:9788560062546</dc:identifier>
@@ -35,18 +35,24 @@ Exemplo:
 #Metadados opcionais (definições pelo W3C)   
 
 **Link (elemento):** Utilizado para relacionar outras fontes ao documento
-**Atributos: href, rel (obrigatórios) media-type (obrigatório, dependendo do tipo de mídia) id,properties, refines, rel (opcionais)** 
+
+**Atributos: href, rel (obrigatórios) media-type (obrigatório, dependendo do tipo de mídia) id,properties, refines, rel** (opcionais) 
+
 ```html
 <link rel="record" href="front.xhtml#meta-json" media-type="application/xhtml+xml"/>
 ```
 
 **dc:contributor:** Usado para representar o nome de uma pessoa ou organização que desempenhou um papel secundário na criação do conteúdo de uma publicação do EPUB. Tem o mesmo papel do dc:creator
-**Atributos:** dir, id, xml:lang (opcionais)
+
+**Atributos:dir, id, xml:lang** (opcionais)
+
 ```html
 <dc:contributor id="contributor">Ceweb.br</dc:contributor>
 ```
 **dc:creator:** Representa o nome de uma pessoa ou organização. responsável pela criação do conteúdo
-**Atributos:** dir, id, xml:lang (opcionais) 
+
+**Atributos: dir, id, xml:lang** (opcionais) 
+
 ```html
 <dc:creator id="creator">NIC.br</dc:creator>
 ```
@@ -56,14 +62,16 @@ Exemplo:
 <dc:creator id="creator02">RNP</dc:creator>
 ```
 **dc:date:** Deve ser usado apenas para definir a data de publicação da publicação EPUB.
-**Atributos:** id (opcional) 
+
+**Atributos:id** (opcional) 
+
 ```html
 <dc:date>2011-01-21T21:00:00Z</dc:date>
 ```
 **Definição de data:** 21 de janeiro de 2011, 21:00 UTC
-*Outros exemplos de definição de data:*
-1963-03-08T14: 07-0600 (8 de março de 1963 às 14:07 no fuso horário seis horas antes do UTC).   
 
+***Outros exemplos de definição de data:***
+1963-03-08T14: 07-0600 (8 de março de 1963 às 14:07 no fuso horário seis horas antes do UTC).   
 2009-02-20T08: 40Z (20 de fevereiro de 2009 8h40, UTC).    
 2018-08-29T15: 19 (15:19, horário local em 29 de agosto de 2018).   
 1809-02-12 (em 12 de fevereiro de 1809).   
@@ -74,14 +82,18 @@ Exemplo:
 13-11-2007 / 15 (algum tempo entre 13 de novembro de 2007 e 15 de novembro de 2007).   
 
 **dc:subject:**  identifica o assunto da publicação do EPUB. O valor do elemento DEVE ser o cabeçalho ou rótulo legível por humanos, mas PODE ser o valor do código se a taxonomia em questão não fornecer um rótulo descritivo separado.
+
 **Atributos: dir, id, xml:lang (opcionais)** 
+
 ```html
 <dc:subject id="subject01">Tecnologia/Interner</dc:subject>
 <meta refines="#subject01" property="authority">BISAC</meta>
 <meta refines="#subject01" property="term">000000000</meta>
 ```
 **dc:type:** usado para indicar que a publicação EPUB fornecida é de um tipo especializado (por exemplo, anotações ou um dicionário compactado no formato EPUB).
-**Atributos:** id (opcional) 
+
+**Atributos:id** (opcional) 
+
 ```html
 <dc:type>revista</dc:type>
 ```
@@ -90,38 +102,51 @@ Exemplo:
 
 **dc:description:** Uma conta do recurso. A descrição pode incluir, mas não está limitada a: um resumo, um índice, uma representação gráfica ou texto livre do recurso.
 
-**Atributos:** dir, id, xml:lang (opcionais)
+**Atributos:dir, id, xml:lang** (opcionais)
+
 ```html
 <dc:description>A cartilha de acessibilidade tem como objetivo...</dc:description>
 ```
 **dc:format:** O formato do arquivo, meio físico ou dimensões do recurso.
-**Atributos:** id (opcional) 
+
+**Atributos:id** (opcional) 
+
 ```html
 <dc:format>text/html</dc:format>
 ```
 **dc:publisher:** Uma entidade responsável por disponibilizar o recurso.
-**Atributos:** dir, id, xml:lang (opcionais) 
+
+**Atributos:dir, id, xml:lang** (opcionais) 
+
 ```html
 <dc:publisher>Comitê Gestor da Internet no Brasil</dc:publisher>
 ```
 **dc:relation:** Um recurso relacionado.
+
 **Atributos: dir, id, xml:lang** (opcionais) 
+
 ```html
 <dc:relation>http://cartilha.cert.br/recursos/</dc:relation>
 ```
 **dc:rights:** Informações sobre direitos mantidos no recurso e sobre ele.
-**Atributos:** dir, id, xml:lang (opcionais) 
+
+**Atributos:dir, id, xml:lang** (opcionais) 
+
 ```html
 <dc:rights>http://creativecommons.org/licenses/by-nc-nd/3.0/br/</dc:rights>
 ```
 **dc:source:** Um recurso relacionado do qual o recurso descrito é derivado.
-**Atributos:** id (opcional) 
+
+**Atributos: id** (opcional) 
+
 ```html
 <dc:source id="src-id">urn:isbn:9780375704024</dc:source>
 ```
 
 **dc:coverage:** O tópico espacial ou temporal do recurso. O tópico espacial e a aplicabilidade espacial podem ser um local nomeado ou um local especificado por suas coordenadas geográficas. O tópico temporal pode ser um período, data ou intervalo nomeado. Uma jurisdição pode ser uma entidade administrativa nomeada ou um local geográfico ao qual o recurso se aplica. A melhor prática recomendada é usar um vocabulário controlado, como o Thesaurus de nomes geográficos [TGN]. Onde apropriado, locais ou períodos de tempo nomeados podem ser usados de preferência a identificadores numéricos, como conjuntos de coordenadas ou períodos.
-**Atributos:** dir, id, xml:lang (opcionais)
+
+**Atributos:dir, id, xml:lang** (opcionais)
+
 ```html
 <dc:coverage>Guerra dos browsers; 2000</dc:coverage>
 ```
@@ -137,6 +162,7 @@ Atributo com o objetivo de estender a semântica do HTML relacionando a áreas d
 
 **epub:type="frontmatter"**
 Material preliminar ao conteúdo principal de uma publicação, como índices, dedicatórias, etc.
+
 ```html
 <body epub:type="frontmatter">
   <section epub:type="prologue">
@@ -144,10 +170,11 @@ Material preliminar ao conteúdo principal de uma publicação, como índices, d
   </section>
 </body>
 </body>
-
+```
 
 **epub:type="abstract"**
 Um breve resumo das principais idéias, conceitos e conclusões do trabalho, ou de uma seção ou trecho dele.
+
 ```html
 <header>
 <h1>A história da Web</h1>
@@ -157,8 +184,8 @@ Um breve resumo das principais idéias, conceitos e conclusões do trabalho, ou 
 </header>
 ```
 
-**epub:type="acknowledgments"**
-Uma passagem contendo agradecimentos às entidades envolvidas na realização do trabalho.
+**epub:type="acknowledgments"** Uma passagem contendo agradecimentos às entidades envolvidas na realização do trabalho.
+
 ```html
 <section epub:type="acknowledgments">
 <h1 epub:type="title">Agradecimentos</h1>
@@ -171,8 +198,8 @@ Uma passagem contendo agradecimentos às entidades envolvidas na realização do
 </section>
 ```
 
-**epub:type="copyright-page"**
-A página de direitos autorais do trabalho.
+**epub:type="copyright-page"** A página de direitos autorais do trabalho.
+
 ```html
 <section epub:type="copyright-page" aria-label="copyright page">
 <p>Creative Comons - Atribuição 4.0 Internacional (CC BY 4.0)</p>
@@ -184,8 +211,8 @@ para qualquer fim, mesmo que comercial.</p>
 </section>
 ```
 
-**epub:type="dedication"**
-Uma inscrição endereçada a uma ou várias pessoas em particular.
+**epub:type="dedication"** Uma inscrição endereçada a uma ou várias pessoas em particular.
+
 ```html
 <section>
 <h1>Dedicatória</h1>
@@ -193,10 +220,9 @@ Uma inscrição endereçada a uma ou várias pessoas em particular.
 <p>Para Peter Maltic, por todos os serviços prestados em favor da Internet</p>
 </section>
 </section>
-``
+```
+**epub:type="foreword"** Uma seção introdutória (prefácio) que precede o trabalho, normalmente não escrita pelo autor do trabalho.
 
-**epub:**type="foreword"
-Uma seção introdutória (prefácio) que precede o trabalho, normalmente não escrita pelo autor do trabalho.
 ```html
 <section epub:type="foreword">
         <header>
@@ -208,8 +234,8 @@ Uma seção introdutória (prefácio) que precede o trabalho, normalmente não e
 </section>
 ```
 
-**epub:** type="halftitlepage"
-A meia página de título do trabalho.
+**epub:type="halftitlepage"** A meia página de título do trabalho.
+
 ```html
 <section epub:type="halftitlepage">
 <h1 epub:type="halftitle">Microdados</h1>
@@ -217,8 +243,8 @@ A meia página de título do trabalho.
 </section>
 ```
 
-**epub:** type="introduction"
-Uma seção no início do trabalho, normalmente apresentando ao leitor o escopo ou a natureza do conteúdo do trabalho.
+**epub:type="introduction"** Uma seção no início do trabalho, normalmente apresentando ao leitor o escopo ou a natureza do conteúdo do trabalho.
+
 ```html
 <section epub:type="introduction" aria-label="Introduction">
 <p>Nos fascículos anteriores foram apresentados os principais conceitos sobre a acessibilidade na Web. No primeiro conhecemos … </p>
@@ -226,8 +252,8 @@ Uma seção no início do trabalho, normalmente apresentando ao leitor o escopo 
 </section>
 ```
 
-**epub:** type="preface"
-Uma seção introdutória que precede o trabalho, normalmente escrita pelo autor do trabalho, diferente do foreword
+**epub:type="preface"** Uma seção introdutória que precede o trabalho, normalmente escrita pelo autor do trabalho, diferente do foreword
+
 ```html
 <section epub:type="preface">
         <span epub:type="pagebreak"/>
@@ -236,8 +262,8 @@ Uma seção introdutória que precede o trabalho, normalmente escrita pelo autor
 …
 </section>
 ```
-**epub:** type="seriespage"
-Seção usada para listar publicações relacionadas.
+**epub:type="seriespage"** Seção usada para listar publicações relacionadas.
+
 ```html
 <section epub:type="seriespage">
 <h1>Publicações relacionadas</h1>
@@ -248,16 +274,16 @@ Seção usada para listar publicações relacionadas.
 </section>
 ```
 
-**epub:** type="titlepage"
-A página de título do trabalho.
+**epub:type="titlepage"**  A página de título do trabalho.
+
 ```html
 <section epub:type="titlepage">
 <h1>Cartilha de Segurança para Internet Versao 4.0</h1>
 …
 </section>
 ```
-**epub:** type="bodymatter"
-O conteúdo principal de uma publicação. 
+**epub:type="bodymatter"** O conteúdo principal de uma publicação.
+
 ```html
 <body epub:type="bodymatter">
 <section epub:type="part">
@@ -267,8 +293,8 @@ O conteúdo principal de uma publicação.
 </body>
 ```
 
-**epub:** type="chapter"
-Uma grande divisão estrutural de uma peça de escrita.
+**epub:type="chapter"** Uma grande divisão estrutural de uma peça de escrita.
+
 ```html
 <section epub:type="chapter">
 <h1>4. Códigos maliciosos ( Malware)</h1>
@@ -276,8 +302,8 @@ Uma grande divisão estrutural de uma peça de escrita.
 </section>
 ```
 
-**epub:** type="part"
-Uma grande divisão estrutural de uma peça de escrita, tipicamente encapsulando um conjunto de capítulos relacionados.
+**epub:type="part"** Uma grande divisão estrutural de uma peça de escrita, tipicamente encapsulando um conjunto de capítulos relacionados.
+
 ```html
 <body epub:type="bodymatter">
 <section epub:type="part">
@@ -292,8 +318,8 @@ Uma grande divisão estrutural de uma peça de escrita, tipicamente encapsulando
 </body>
 ```
 
-**epub:** type="qna"
-Uma seção de perguntas e respostas.
+**epub:type="qna"** Uma seção de perguntas e respostas.
+
 ```html
 <section epub:type="qna">
         <h1>Questionário:</h1>
@@ -305,8 +331,8 @@ Uma seção de perguntas e respostas.
 </section>
 ```
 
-**epub:** type="volume"
-Um componente de uma coleção.
+**epub:type="volume"** Um componente de uma coleção.
+
 ```html
 <section epub:type="volume">
         <h1>VOLUME I</h1>
@@ -320,8 +346,8 @@ Um componente de uma coleção.
 </section>
 ```
 
-**epub:** type="backmatter"
-Material auxiliar que ocorre após o conteúdo principal de uma publicação, como índices, apêndices etc.
+**epub:type="backmatter"** Material auxiliar que ocorre após o conteúdo principal de uma publicação, como índices, apêndices etc.
+
 ```html
 <body epub:type="backmatter">
 <section epub:type="credits">
@@ -331,8 +357,8 @@ Material auxiliar que ocorre após o conteúdo principal de uma publicação, co
 </body>
 ```
 
-**epub:** type="afterword"
-Uma declaração final do autor ou de uma pessoa importante para a história, geralmente fornecendo informações sobre como a história foi escrita, seu significado ou eventos relacionados que ocorreram desde sua linha do tempo.
+**epub:type="afterword"** Uma declaração final do autor ou de uma pessoa importante para a história, geralmente fornecendo informações sobre como a história foi escrita, seu significado ou eventos relacionados que ocorreram desde sua linha do tempo.
+
 ```html 
 <section epub:type="afterword">
         <h1>Posfácio</h1>
@@ -340,8 +366,8 @@ Uma declaração final do autor ou de uma pessoa importante para a história, ge
 </section>
 ```
 
-**epub:** type="appendix"
-Informação complementar.
+**epub:type="appendix"** Informação complementar.
+
 ```html
 <section epub:type="appendix">
 <h1>Appendice D</h1>
@@ -350,8 +376,8 @@ Informação complementar.
 </section>
 ```
 
-**epub:** type="colophon"
-Uma breve descrição geralmente localizada no final de uma publicação, descrevendo notas de produção relevantes para a edição.
+**epub:type="colophon"** Uma breve descrição geralmente localizada no final de uma publicação, descrevendo notas de produção relevantes para a edição.
+
 ```html
 <section epub:type="colophon">
         <h1>Notas sobre a publicação</h1>
@@ -359,8 +385,8 @@ Uma breve descrição geralmente localizada no final de uma publicação, descre
 </section>
 ```
 
-**epub:** type="conclusion"
-Uma seção final que normalmente encerra o trabalho.
+**epub:type="conclusion"** Uma seção final que normalmente encerra o trabalho.
+
 ```html
 <section epub:type="conclusion">
 <h1>Conclusão</h1>
@@ -368,17 +394,17 @@ Uma seção final que normalmente encerra o trabalho.
 </section>
 ```
 
-**epub:** type="epigraph"
-Uma cotação definida no início do trabalho ou uma seção que estabelece o tema ou define o estado de espírito.
+**epub:type="epigraph"** Uma cotação definida no início do trabalho ou uma seção que estabelece o tema ou define o estado de espírito.
+
 ```html
 <blockquote epub:type="epigraph">
 <p>“No princípio não existia nada”</p>
 </blockquote>
 ```
 
-**epub:** type="bibliography"
-Uma lista de trabalhos citados.
+**epub:type="bibliography"** Uma lista de trabalhos citados.
 Bibliografia deve ser estruturada em listas ordenadas <ol>. Utilize elementos <section> para organizar a bibliografia em seções lógicas. Se a seção não tiver um título <h1>, utilize o atributo aria-label para fornecer informação a tecnologia assistiva.
+	
 ```html
 	<section epub:type="bibliography">
 <h1>Referências</h1>
@@ -389,9 +415,8 @@ Bibliografia deve ser estruturada em listas ordenadas <ol>. Utilize elementos <s
 </section>
 ```
 
+**epub:type="biblioentry"** Uma entrada em uma bibliografia.
 
-**epub:** type="biblioentry"
-Uma entrada em uma bibliografia.
 ```html
 <ol>
 <li epub:type="biblioentry">Cartilha de Segurança para Internet, versao 4.0 / CERT.br (2012). … </li>
@@ -399,14 +424,14 @@ Uma entrada em uma bibliografia.
 </ol>
 ```
 
-**epub:** type="biblioref"
-Uma referência a uma entrada da bibliografia.
+**epub:type="biblioref"** Uma referência a uma entrada da bibliografia.
+
 ```html
 <p>Acessibilidade na web é a possibilidade e a condição de alcance, percepção, entendimento e interação para a utilização, a participação e a contribuição, em igualdade de oportunidades, com segurança e autonomia, em sítios e serviços disponíveis na web, por qualquer indivíduo, independentemente de sua capacidade motora, visual, auditiva, intelectual, cultural ou social, a qualquer momento, em qualquer local e em qualquer ambiente físico ou computacional e a partir de qualquer dispositivo de acesso. (<a epub:type="biblioref" href="#ref12">NIC.br, 2013</a>).</p>
 ```
 
-**epub:** type="glossary"
-Uma lista alfabética de termos em um domínio específico do conhecimento, com as definições para esses termos.
+**epub:type="glossary"** Uma lista alfabética de termos em um domínio específico do conhecimento, com as definições para esses termos.
+
 ```html
 <dl epub:type="glossary">
   <dt id="glossario">
@@ -414,8 +439,8 @@ Uma lista alfabética de termos em um domínio específico do conhecimento, com 
   </dt>
 ```
 
-**epub:** type="glossdef"
-A definição de um termo em um glossário.
+**epub:type="glossdef"** A definição de um termo em um glossário.
+
 ```html
 <body epub:type="glossary">
   <ul>
@@ -426,8 +451,8 @@ A definição de um termo em um glossário.
     </li>
 ```
 
-**epub:** type="glossterm"
-Um termo do glossário.
+**epub:type="glossterm"** Um termo do glossário.
+
 ```html
 <body epub:type="glossary">
   <ul>
@@ -438,15 +463,14 @@ Um termo do glossário.
     </li>
 ```
 
+**epub:type="glossref"** Uma referência a uma definição de glossário.
 
-**epub:** type="glossref"
-Uma referência a uma definição de glossário.
 ```html
 <p>Também pode ser chamado de <a epub:type="glossref" href="glossario.xhtml#spamzombie">spam zombie</a> quando o bot instalado o transforma em um servidor de e-mails e o utiliza para o envio de spam </p>
 ```
 
-**epub:** type="case-study"
-Uma análise detalhada de um tópico específico.
+**epub: type="case-study"** Uma análise detalhada de um tópico específico.
+
 ```html
 <aside epub:type="case-study">
 <h3>Evidência</h1>
@@ -455,16 +479,16 @@ Uma análise detalhada de um tópico específico.
 </aside>
 ```
 
-**epub:** type="help"
-Informações que esclarecem ou complementam o conteúdo.
+**epub:type="help"**  Informações que esclarecem ou complementam o conteúdo.
+
 ```html
 <aside epub:type="help" aria-label="hint">
         <p>Considere a direção de leitura da esquerda para a direita</p>
 </aside>
 ```
 
-**epub:** type="notice"
-Informações que requerem atenção especial e que não devem ser ignoradas ou suprimidas. Os exemplos incluem: alerta, aviso, cautela, perigo, importante.
+**epub:type="notice"** Informações que requerem atenção especial e que não devem ser ignoradas ou suprimidas. Os exemplos incluem: alerta, aviso, cautela, perigo, importante.
+
 ```html
 <aside epub:type="notice">
         <img src="alerta.jpg" alt="Alerta"/>
@@ -472,21 +496,21 @@ Informações que requerem atenção especial e que não devem ser ignoradas ou 
 </aside>
 ```
 
-**epub:** type="pullquote"
-Uma citação do texto que é definido de maneira distinta, como em um tipo de letra maior.
+**epub:type="pullquote"** Uma citação do texto que é definido de maneira distinta, como em um tipo de letra maior.
+
 ```html
 <aside epub:type="pullquote">
 <p>“Tornar acessível uma aplicação na Web é responsabilidade de todos no projeto”</p>
 </aside>
 ```
 
-**epub:** type="learning-objective"
-Uma designação ou descrição explícita de um objetivo de aprendizado ou uma referência a um objetivo de aprendizado explícito.
+**epub:type="learning-objective"** Uma designação ou descrição explícita de um objetivo de aprendizado ou uma referência a um objetivo de aprendizado explícito.
+
 ```html
 <li epub:type="learning-objective">Conceitos detalhados para a compreensão do exercício</li>
 ```
-**epub:** type="learning-objectives"
-Uma coleção de objetivos de aprendizagens.
+**epub: type="learning-objectives"** Uma coleção de objetivos de aprendizagens.
+
 ```html 
 <section epub:type="learning-objectives">
 <header>
@@ -499,13 +523,13 @@ Uma coleção de objetivos de aprendizagens.
 </section>
 ```
 
-**epub:** type="learning-outcome"
-A compreensão ou habilidade que um aluno deve alcançar como resultado de uma lição ou atividade.
+**epub: type="learning-outcome"** A compreensão ou habilidade que um aluno deve alcançar como resultado de uma lição ou atividade.
+
 ```html
 <li epub:type="learning-outcomes">Esperamos que o aluno esteja apto a configurar um servidor de forma...</li>
 ```
-**epub:** type="learning-outcomes"
-Uma coleção de resultados.
+**epub:type="learning-outcomes"** Uma coleção de resultados.
+
 ```html
 <section epub:type="learning-outcomes">
 <header>
@@ -519,13 +543,13 @@ Uma coleção de resultados.
 </section>
 ```
 
-**epub:** type="learning-resource"
-Um recurso fornecido para aprimorar o aprendizado ou uma referência a esse recurso.
+**epub:type="learning-resource"** Um recurso fornecido para aprimorar o aprendizado ou uma referência a esse recurso.
+
 ```html
 <li epub:type="learning-resource"><a href="http://example.com/cs01">Caso de estudo: Configurando uma rede wireless</a></li>
 ```
-**epub:** type="learning-resources"
-Uma coleção de recursos de aprendizado.
+**epub:type="learning-resources"** Uma coleção de recursos de aprendizado.
+
 ```html
 <section aria-label="learning resources">
    <p>Consulte os links a seguir para mais informações:</p>
@@ -536,13 +560,13 @@ Uma coleção de recursos de aprendizado.
 </section>
 ```
 
-**epub:** type="learning-standard"
-Um conjunto formal de expectativas ou requisitos normalmente emitidos por um governo ou um organismo de normas.
+**epub:type="learning-standard"** Um conjunto formal de expectativas ou requisitos normalmente emitidos por um governo ou um organismo de normas.
+
 ```html
 <li epub:type="learning-standard">Os alunos devem ser capazes de identificar quem está contando a história no início e no final.</li>
 ```
-**epub:** type="learning-standards"
-Uma coleção de padrões.
+**epub:type="learning-standards"** Uma coleção de padrões.
+
 ```html 
 <section>
    <h3>Estudo de padrões</h3>
@@ -553,8 +577,8 @@ Uma coleção de padrões.
 </section>
 ```
 
-**epub:** type="answer"
-A resposta a uma pergunta.
+**epub:type="answer"** A resposta a uma pergunta.
+
 ```html 
 <li epub:type="general-problem">
         <p epub:type="question">...</p>
@@ -562,8 +586,8 @@ A resposta a uma pergunta.
 </li>
 ```
 
-**epub:** type="answers"
-Uma coleção de respostas
+**epub:type="answers"** Uma coleção de respostas
+
 ```html
 <ol epub:type="answers">
 <li id="ans1">125 mil usuários</li>
@@ -573,8 +597,8 @@ Uma coleção de respostas
 </ol>
 ```
 
-**epub:** type="assessment"
-Um teste ou outra atividade que ajude a medir a compreensão do aluno sobre o que está sendo ensinado.
+**epub:type="assessment"** Um teste ou outra atividade que ajude a medir a compreensão do aluno sobre o que está sendo ensinado.
+
 ```html
 <section epub:type="assessment">
 <h1>Estudo de padrões</h1>
@@ -589,8 +613,8 @@ Um teste ou outra atividade que ajude a medir a compreensão do aluno sobre o qu
 </section>
 ```
 
-**epub:** type="assessments"
-Uma coleção de avaliações.
+**epub:type="assessments"** Uma coleção de avaliações.
+
 ```html
 <section epub:type="assessments">
         <h1>Avaliações</h1>
@@ -605,17 +629,16 @@ Uma coleção de avaliações.
 </section>
 ```
 
+**epub:type="feedback"** Instruções úteis para o leitor com base no resultado de uma avaliação.
 
-**epub:** type="feedback"
-Instruções úteis para o leitor com base no resultado de uma avaliação.
 ```html
 <div epub:type="feedback" id="quiz01" aria-live="assertive">
         <!--feedback escrito dinamicamente -->
 </div>
 ```
 
-**epub:** type="fill-in-the-blank-problem"
-Um problema que exige que o leitor insira uma resposta em texto para completar uma frase, afirmação ou similar.
+**epub:type="fill-in-the-blank-problem"** Um problema que exige que o leitor insira uma resposta em texto para completar uma frase, afirmação ou similar.
+
 ```html
 <div epub:type="fill-in-the-blank-problem">
 <div epub:type="question">
@@ -629,8 +652,8 @@ As _____ servem para definir o estilo de uma página.
 </div>
 ```
 
-**epub:** type="general-problem"
-Um problema com uma solução de forma livre.
+**epub:type="general-problem"** Um problema com uma solução de forma livre.
+
 ```html
 <div epub:type="general-problem">
 <div epub:type="question">
@@ -640,8 +663,8 @@ Qual seria uma descrição melhor do realismo ingênuo,
 </div>
 ```
 
-**epub:** type="match-problem"
-Um problema que requer que o leitor combine o conteúdo de uma lista com os itens correspondentes em outra lista.
+**epub:type="match-problem"** Um problema que requer que o leitor combine o conteúdo de uma lista com os itens correspondentes em outra lista.
+
 ```html
 <div epub:type="match-problem">
 <p> Combine os itens da lista da esquerda com os itens da lista da direita </p>
@@ -663,8 +686,8 @@ Um problema que requer que o leitor combine o conteúdo de uma lista com os iten
 </div>
 ```
 
-**epub:** type="multiple-choice-problem"
-Um problema com um conjunto de respostas em potencial para escolher - algumas, todas ou nenhuma delas podem estar corretas.
+**epub:type="multiple-choice-problem"** Um problema com um conjunto de respostas em potencial para escolher - algumas, todas ou nenhuma delas podem estar corretas.
+
 ```html
 <div epub:type="multiple-choice-problem">   
 <p epub:type="question">Which New Yorker author also wrote children's books?</p>
@@ -676,8 +699,8 @@ Um problema com um conjunto de respostas em potencial para escolher - algumas, t
 </div>
 ```
 
-**epub:** type="practice"
-Um exercício de revisão ou amostra.
+**epub:type="practice"** Um exercício de revisão ou amostra.
+
 ```html
 <section epub:type="practice">
 <h1>Chapter 1</h1>
@@ -693,8 +716,8 @@ Um exercício de revisão ou amostra.
 </section>
 ```
 
-**epub:** type="practices"
-Uma coleção de práticas.
+**epub:type="practices"** Uma coleção de práticas.
+
 ```html
 <section epub:type="practices">
 <h1>Learning Activities</h1>
@@ -710,8 +733,8 @@ Uma coleção de práticas.
 </section>
 ```
 
-**epub:** type="question"
-Uma declaração que solicita informações ou testa um problema. Normalmente encontrados emparelhados com uma ou mais respostas - ou possíveis respostas - em problemas de autoavaliação, entrevistas com perguntas e respostas e perguntas freqüentes, embora uma resposta não seja necessária.
+**epub:type="question"**  Uma declaração que solicita informações ou testa um problema. Normalmente encontrados emparelhados com uma ou mais respostas - ou possíveis respostas - em problemas de autoavaliação, entrevistas com perguntas e respostas e perguntas freqüentes, embora uma resposta não seja necessária.
+
 ```html
 <li epub:type="general-problem">
         <p epub:type="question">...</p>
@@ -719,8 +742,8 @@ Uma declaração que solicita informações ou testa um problema. Normalmente en
 </li>
 ```
 
-**epub:** type="true-false-problem"
-Um problema com uma resposta verdadeira ou falsa.
+**epub:type="true-false-problem"** Um problema com uma resposta verdadeira ou falsa.
+
 ```html
 <ol>
 <li epub:type="true-false-problem">
@@ -733,16 +756,16 @@ Um problema com uma resposta verdadeira ou falsa.
 </ol>
 ```
 
-**epub:** type="footnote"
-Uma nota que aparece na parte inferior de uma página.
+**epub:type="footnote"** Uma nota que aparece na parte inferior de uma página.
+
 ```html
 <aside epub:type="footnote" id="fn01">
 <a href="#footnoteref01">1</a> The CDA requirements are roughly equivalent to one year of college.
 </aside>
 ```
 
-**epub:** type="footnotes"
-Uma coleção de notas que aparecem na parte inferior de uma página.
+**epub:type="footnotes"** Uma coleção de notas que aparecem na parte inferior de uma página.
+
 ```html
 <aside epub:type="footnotes">
         <p id="fn01" epub:type="footnote"><a href="#fnref01">1</a>. The original
@@ -752,13 +775,13 @@ paragraph was lost to bookworms.</p>
 </aside>
 ```
 
-**epub:** type="noteref"
-Uma referência a uma nota, geralmente aparecendo um símbolo sobrescrito no corpo principal do texto.
+**epub:type="noteref"** Uma referência a uma nota, geralmente aparecendo um símbolo sobrescrito no corpo principal do texto.
+
 ```html
 <p>Another important aspect of this book is that it follows an iterative style. In the computing education community, a well-known educational design pattern exists that states that important concepts should be taught early and often.<a epub:type="noteref" href="#endnote1">1</a> … </p>
 ```
-**epub:** type="rearnotes"
-Uma nota que aparece na parte traseira (contra-capa) da obra ou no final de uma seção.
+**epub:type="rearnotes"** Uma nota que aparece na parte traseira (contra-capa) da obra ou no final de uma seção.
+
 ```html
 <section epub:type="rearnotes">
         <h2>Notes</h2>
@@ -768,8 +791,8 @@ Uma nota que aparece na parte traseira (contra-capa) da obra ou no final de uma 
 </section>
 ```
 
-**epub:** type="rearnotes"
-Uma coleção de notas que aparecem na parte traseira (contra-capa) da obra ou no final de uma seção.
+**epub:type="rearnotes"** Uma coleção de notas que aparecem na parte traseira (contra-capa) da obra ou no final de uma seção.
+
 ```html
 <section>
         <h2>Notes</h2>
@@ -783,8 +806,8 @@ excavation of the area …</li>
 </section>
 ```
 
-**epub:** type=”referrer”
-Um link para o local inicial em um relacionamento de link bidirecional.
+**epub:type=”referrer”** Um link para o local inicial em um relacionamento de link bidirecional.
+
 ```html
 <aside epub:type="rearnote" id="fn01">
 <p>
@@ -796,8 +819,8 @@ The CDA requirements are roughly equivalent to one year of college.
 </aside>
 ```
 
-**epub:** type="label"
-O rótulo do texto que precede um ordinal no título de um componente (por exemplo, 'Capítulo', 'Parte', 'Figura', 'Tabela').
+**epub:type="label"** O rótulo do texto que precede um ordinal no título de um componente (por exemplo, 'Capítulo', 'Parte', 'Figura', 'Tabela').
+
 ```html
 <h1>
 <span epub:type="label">Chaper</span>
@@ -805,8 +828,8 @@ O rótulo do texto que precede um ordinal no título de um componente (por exemp
 </h1>
 ```
 
-**epub:** type="ordinal"
-Um especificador ordinal para um componente em uma sequência de componentes (por exemplo, '1', 'IV', 'B-1').
+**epub:type="ordinal"** Um especificador ordinal para um componente em uma sequência de componentes (por exemplo, '1', 'IV', 'B-1').
+
 ```html
 <ul>
         <li><span epub:type="ordinal">LO.1a</span> … </li>
@@ -815,8 +838,8 @@ Um especificador ordinal para um componente em uma sequência de componentes (po
 </ul>
 ```
 
-**epub:** type="subtitle"
-Um título explicativo ou alternativo.
+**epub:type="subtitle"** Um título explicativo ou alternativo.
+
 ```html
 <section>
 <header>
@@ -827,8 +850,8 @@ Um título explicativo ou alternativo.
 </section>
 ```
 
-**epub:** type="title"
-O nome principal de uma obra, seção ou componente.
+**epub:type="title"** O nome principal de uma obra, seção ou componente.
+
 ```html
 <h1>
 <span epub:type="label">Chaper</span>
@@ -837,20 +860,19 @@ O nome principal de uma obra, seção ou componente.
 </h1>
 ```
 
-**epub:** type="pagebreak"
-Um separador (às vezes com valor) que indica a posição antes da qual ocorre uma quebra entre duas páginas contíguas em uma mídia paginada estaticamente.
+**epub:type="pagebreak"** Um separador (às vezes com valor) que indica a posição antes da qual ocorre uma quebra entre duas páginas contíguas em uma mídia paginada estaticamente.
+
 ```html 
 <span epub:type="pagebreak" id="pg302" title="302"/>
 ```
-```html <span epub:type="pagebreak" id="pg302" title="302"/>
 
-**epub:** type="keyword"
-Uma palavra-chave ou frase.
+**epub:type="keyword"** Uma palavra-chave ou frase.
+
 ```html 
 <p>A <b epub:type="keyword">capital gain</b> is realized when … </p>
 ```
-**epub:** type="keywords"
-Uma coleção de palavras-chave.
+**epub:type="keywords"** Uma coleção de palavras-chave.
+
 ```html
 <section>
 <h1>Key Terms</h1>
@@ -862,14 +884,14 @@ Uma coleção de palavras-chave.
 </section>
 ```
 
-**epub:** type="credit"
-Um reconhecimento da fonte do conteúdo citado ou de uma contribuição ao trabalho.
+**epub:type="credit"** Um reconhecimento da fonte do conteúdo citado ou de uma contribuição ao trabalho.
+
 ```html 
 <p epub:type="credit">Page <a href="C03.xhtml#ch03table01">62</a>, <a href="C03.xhtml#ch03table01">Table 3.1</a> from <cite>“Economic Foundations of Cost-Effectiveness Analysis”</cite> by A. M. Garber and C. E. Phelps, <cite>Journal of Health Economics</cite> 16(1):1–31, 1997. Reprinted by permission of Elsevier Science.</p>
 ```
 
-**epub:** type="credits"
-Uma coleção de créditos.
+**epub:type="credits"** Uma coleção de créditos.
+
 ```html
 <section epub:type="credits">
 <h1>Credits</h1>
@@ -887,8 +909,8 @@ Elsevier Science.</p>
 </section>
 ```
 
-**epub:** type="loa"
-Uma lista de clipes de áudio incluídos no trabalho.
+**epub:type="loa"** Uma lista de clipes de áudio incluídos no trabalho.
+
 ```html
 <nav epub:type="loa">
         <h2>List of Audio</h2>
@@ -901,8 +923,8 @@ Address</a></li>
 </nav>
 ```
 
-**epub:** type="loi"
-Uma lista de ilustrações incluídas no trabalho.
+**epub:type="loi"** Uma lista de ilustrações incluídas no trabalho.
+
 ```html
 <nav epub:type="loi">
         <h2>List of Illustrations</h2>
@@ -914,8 +936,8 @@ Uma lista de ilustrações incluídas no trabalho.
 </nav>
 ```
 
-**epub:** type="lot"
-Uma lista de tabelas incluídas no trabalho.
+**epub:type="lot"** Uma lista de tabelas incluídas no trabalho.
+
 ```html 
 <nav epub:type="lot">
         <h2>List of Tables</h2>
@@ -929,8 +951,8 @@ Unemployment Rates</a></li>
 </nav>
 ```
 
-**epub:** type="lov"
-Uma lista de videoclipes incluídos no trabalho.
+**epub:type="lov"** Uma lista de videoclipes incluídos no trabalho.
+
 ```html
 <nav epub:type="lov">
         <h2>List of Video</h2>
@@ -943,9 +965,8 @@ Disaster</a></li>
 </nav>
 ```
 
-**epub:type="toc"**
-Um índice, normalmente aparecendo no frontmatter da obra ou no
-início de uma seção.
+**epub:type="toc"** Um índice, normalmente aparecendo no frontmatter da obra ou no início de uma seção.
+
 ```html
 <nav role="doc-toc" epub:type="toc" id="toc">
 <h2>Table of Contents</h2>
@@ -958,8 +979,8 @@ início de uma seção.
 </nav>
 ```
 
-**epub:type="toc-brief"**
-Uma versão reduzida e/ou especializada do índice.
+**epub:type="toc-brief"** Uma versão reduzida e/ou especializada do índice.
+
 ```html
 <nav epub:type="toc-brief" id="toc-brief">
  <h1>Brief Table of contents</h1>
@@ -976,8 +997,8 @@ Uma versão reduzida e/ou especializada do índice.
 </nav>
 ```
 
-**epub:type="index"**
-Um auxílio à navegação que fornece uma lista detalhada de links para assuntos importantes, nomes e outros tópicos importantes abordados no trabalho.
+**epub:type="index"** Um auxílio à navegação que fornece uma lista detalhada de links para assuntos importantes, nomes e outros tópicos importantes abordados no trabalho.
+
 ```html
 <body epub:type="index">
 		<h2>Simplest index</h2>
@@ -999,11 +1020,11 @@ Um auxílio à navegação que fornece uma lista detalhada de links para assunto
 			<li><span epub:type="index-term">Twitter</span>, 
 				<a epub:type="index-locator" href="...">37-42</a></li>
 		</ul>
-	</body>
+</body>
 ```
 
-**epub:type="index-headnotes"**
-Narrativa ou outro conteúdo para ajudar os usuários a usar o índice.
+**epub:type="index-headnotes"** Narrativa ou outro conteúdo para ajudar os usuários a usar o índice.
+
 ```html
 <header epub:type="index-headnotes">
 	<h1>Subject Index</h1>
@@ -1014,8 +1035,8 @@ Narrativa ou outro conteúdo para ajudar os usuários a usar o índice.
 </header> 
 ```
 
-**epub:type="index-legend"**
-Lista de símbolos, abreviações ou formatação especial usada no índice e seus significados.
+**epub:type="index-legend"** Lista de símbolos, abreviações ou formatação especial usada no índice e seus significados.
+
 ```html
 <header epub:type="index-headnotes">
 	<p>The following abbreviations are used in this index.</p>
@@ -1033,8 +1054,8 @@ Lista de símbolos, abreviações ou formatação especial usada no índice e se
 </header> 
 ```
 
-**epub:type="index-group"**
-Coleção de entradas principais consecutivas que compartilham uma característica comum, por exemplo, a letra inicial das entradas principais.
+**epub:type="index-group"** Coleção de entradas principais consecutivas que compartilham uma característica comum, por exemplo, a letra inicial das entradas principais.
+
 ```html
 <section epub:type="index">
 	...
@@ -1049,8 +1070,8 @@ Coleção de entradas principais consecutivas que compartilham uma característi
 </section>
 ```
 
-**epub:type="index-entry-list"**
-Coleção de entradas principais ou subentradas consecutivas.
+**epub:type="index-entry-list"** Coleção de entradas principais ou subentradas consecutivas.
+
 ```html
 <ul epub:type="index-entry-list">
 	<li epub:type="index-entry">
@@ -1069,8 +1090,8 @@ Coleção de entradas principais ou subentradas consecutivas.
 </ul>
 ```
 
-**epub:type="index-entry"**
-Um termo com qualquer subentrada, localizador, referência cruzada e / ou nota editorial do atendente.
+**epub:type="index-entry"** Um termo com qualquer subentrada, localizador, referência cruzada e / ou nota editorial do atendente.
+
  ```html
 <ul epub:type="index-entry-list">
 	<li epub:type="index-entry">
@@ -1085,8 +1106,8 @@ Um termo com qualquer subentrada, localizador, referência cruzada e / ou nota e
 </ul>
 ```
 
-**epub:type="index-term"**
-Palavra, frase, string, glifo ou imagem representando o conteúdo indexável.
+**epub:type="index-term"** Palavra, frase, string, glifo ou imagem representando o conteúdo indexável.
+
  ```html
 <ul epub:type="index-entry-list">
 	<li epub:type="index-entry">
@@ -1102,8 +1123,8 @@ Palavra, frase, string, glifo ou imagem representando o conteúdo indexável.
 ```
 
 
-**epub:type="index-editor-note"**
-Nota editorial referente a uma única entrada.
+**epub:type="index-editor-note"** Nota editorial referente a uma única entrada.
+
  ```html
 <ul>
 	<li>
@@ -1113,18 +1134,18 @@ Nota editorial referente a uma única entrada.
 </ul> 
 ```
 
-**epub:type="index-locator"**
-Uma referência a uma ocorrência do conteúdo indexado na publicação.
-	```html
-	<a epub:type="index-locator"><img alt="phone" src="phone-icon.png"/></a>
-	...
-	<a epub:type="index-locator">35</a>
-	...
-	<a epub:type="index-locator">II:14</a> 
-	```
+**epub:type="index-locator"** Uma referência a uma ocorrência do conteúdo indexado na publicação.
 
-**epub:type="index-locator-list"**
-Coleção de localizadores sequenciais ou intervalos de localizadores.
+```html
+<a epub:type="index-locator"><img alt="phone" src="phone-icon.png"/></a>
+	...
+<a epub:type="index-locator">35</a>
+	...
+<a epub:type="index-locator">II:14</a> 
+```
+
+**epub:type="index-locator-list"** Coleção de localizadores sequenciais ou intervalos de localizadores.
+
  ```html
 <ul epub:type="index-locator-list">
 	<li>
@@ -1144,8 +1165,8 @@ Coleção de localizadores sequenciais ou intervalos de localizadores.
 </ul> 
 ```
 
-**epub:type="index-locator-range"**
-Um par de localizadores que conecta um termo a um intervalo de conteúdo, em vez de um único ponto. 
+**epub:type="index-locator-range"** Um par de localizadores que conecta um termo a um intervalo de conteúdo, em vez de um único ponto. 
+
  ```html
 <ul epub:type="index-locator-list">
 	<li epub:type="index-locator-range">
@@ -1154,8 +1175,8 @@ Um par de localizadores que conecta um termo a um intervalo de conteúdo, em vez
 </ul>
 ```
 
-**epub:type="index-xref-preferred"**
-Referência de um termo a um ou mais termos ou categorias preferenciais em um índice (análogo a "Ver xxx").
+**epub:type="index-xref-preferred"** Referência de um termo a um ou mais termos ou categorias preferenciais em um índice (análogo a "Ver xxx").
+
  ```html
 <!-- note id attribute beij -->
 <li epub:type="index-entry" id="beij">
@@ -1172,8 +1193,8 @@ Referência de um termo a um ou mais termos ou categorias preferenciais em um í
 </li>
 ```
 
-**epub:type="index-xref-related"**
-Referência de um termo a um ou mais termos ou categorias de termos relacionados em um índice (análogo a "Consulte também xxx").
+**epub:type="index-xref-related"** Referência de um termo a um ou mais termos ou categorias de termos relacionados em um índice (análogo a "Consulte também xxx").
+
  ```html
 <li epub:type="index-entry">
 	<span epub:type="index-term">sweet potatoes</span>
@@ -1184,8 +1205,8 @@ Referência de um termo a um ou mais termos ou categorias de termos relacionados
 </li>
 ```
 
-**epub:type="index-term-category"**
-Palavra, frase, string, glifo ou imagem representando uma categoria de termos no índice.
+**epub:type="index-term-category"** Palavra, frase, string, glifo ou imagem representando uma categoria de termos no índice.
+
  ```html
 <li epub:type="index-entry">
 	<span epub:type="index-term">battles</span>
@@ -1195,8 +1216,7 @@ Palavra, frase, string, glifo ou imagem representando uma categoria de termos no
 </li> 
 ```
 
-**epub:type="index-term-categories"**
-Wrapper para uma lista das categorias de termos pertencentes a um índice.
+**epub:type="index-term-categories"** Wrapper para uma lista das categorias de termos pertencentes a um índice.
 
 ```html
 <nav epub:type="index-term-categories" hidden="">
@@ -1220,3 +1240,4 @@ Wrapper para uma lista das categorias de termos pertencentes a um índice.
 		</ol>
 	</li>
 </ul> 
+
