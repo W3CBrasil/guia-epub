@@ -1,16 +1,20 @@
 **Metadados**
 
 **dc:identifier:** Refere-se ao identificador associado da publicação. Pode ser um UUID, DOI ou ISBN.   
+
 **Atributos:** id (opcional)
 
 **dc:title:** Refere-se ao nome da publicação
+
 **Atributos:** dir, id, xml:lang (opcionais)
 
 ```html
 <dc:title>Revista .br</dc:title>
 ```
-**dc:language:** Refere-se ao idioma da publicação
+**dc:language:** Refere-se ao idioma da publicação  
+
 **Atributos:** V id (opcional)
+
 ```html
 <dc:language>pt-br</dc:language>
 ```
@@ -28,10 +32,10 @@ Exemplo:
  </metadata>
 ```
 
-**Metadados opcionais** (definições pelo W3C)   
+#Metadados opcionais (definições pelo W3C)   
 
 **Link (elemento):** Utilizado para relacionar outras fontes ao documento
-Atributos: href, rel (obrigatórios) media-type (obrigatório, dependendo do tipo de mídia) id,properties, refines, rel (opcionais) 
+**Atributos: href, rel (obrigatórios) media-type (obrigatório, dependendo do tipo de mídia) id,properties, refines, rel (opcionais)** 
 ```html
 <link rel="record" href="front.xhtml#meta-json" media-type="application/xhtml+xml"/>
 ```
@@ -51,7 +55,6 @@ Atributos: href, rel (obrigatórios) media-type (obrigatório, dependendo do tip
 <dc:creator id="creator01">NIC.br</dc:creator>
 <dc:creator id="creator02">RNP</dc:creator>
 ```
-
 **dc:date:** Deve ser usado apenas para definir a data de publicação da publicação EPUB.
 **Atributos:** id (opcional) 
 ```html
@@ -71,7 +74,7 @@ Atributos: href, rel (obrigatórios) media-type (obrigatório, dependendo do tip
 13-11-2007 / 15 (algum tempo entre 13 de novembro de 2007 e 15 de novembro de 2007).   
 
 **dc:subject:**  identifica o assunto da publicação do EPUB. O valor do elemento DEVE ser o cabeçalho ou rótulo legível por humanos, mas PODE ser o valor do código se a taxonomia em questão não fornecer um rótulo descritivo separado.
-**Atributos:** dir, id, xml:lang (opcionais) 
+**Atributos: dir, id, xml:lang (opcionais)** 
 ```html
 <dc:subject id="subject01">Tecnologia/Interner</dc:subject>
 <meta refines="#subject01" property="authority">BISAC</meta>
@@ -86,6 +89,7 @@ Atributos: href, rel (obrigatórios) media-type (obrigatório, dependendo do tip
 # Metadados opcionais (definições pelo Dublin Core)
 
 **dc:description:** Uma conta do recurso. A descrição pode incluir, mas não está limitada a: um resumo, um índice, uma representação gráfica ou texto livre do recurso.
+
 **Atributos:** dir, id, xml:lang (opcionais)
 ```html
 <dc:description>A cartilha de acessibilidade tem como objetivo...</dc:description>
