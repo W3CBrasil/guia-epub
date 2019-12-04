@@ -1,4 +1,4 @@
-#Metadados
+# Metadados
 
 **dc:identifier:** Refere-se ao identificador associado da publicação. Pode ser um UUID, DOI ou ISBN.   
 
@@ -32,7 +32,7 @@
  </metadata>
 ```
 
-#Metadados opcionais (definições pelo W3C)   
+# Metadados opcionais (definições pelo W3C)   
 
 **Link (elemento):** Utilizado para relacionar outras fontes ao documento
 
@@ -70,7 +70,8 @@
 ```
 **Definição de data:** 21 de janeiro de 2011, 21:00 UTC
 
-***Outros exemplos de definição de data:***
+***Outros exemplos de definição de data:***   
+
 1963-03-08T14: 07-0600 (8 de março de 1963 às 14:07 no fuso horário seis horas antes do UTC).   
 2009-02-20T08: 40Z (20 de fevereiro de 2009 8h40, UTC).    
 2018-08-29T15: 19 (15:19, horário local em 29 de agosto de 2018).   
@@ -157,11 +158,9 @@ http://rs.tdwg.org/dwc/terms/#dcterms:modified
 EPUB 3 Best Practices. Garrish, M., Gylling , M. 2013. O′Reilly; Edição: 1   
 
 
-**epub:type**
-Atributo com o objetivo de estender a semântica do HTML relacionando a áreas da publicação. Os mais comuns são:
+**epub:type** Atributo com o objetivo de estender a semântica do HTML relacionando a áreas da publicação. Os mais comuns são:
 
-**epub:type="frontmatter"**
-Material preliminar ao conteúdo principal de uma publicação, como índices, dedicatórias, etc.
+**epub:type="frontmatter"** Material preliminar ao conteúdo principal de uma publicação, como índices, dedicatórias, etc.
 
 ```html
 <body epub:type="frontmatter">
@@ -172,8 +171,7 @@ Material preliminar ao conteúdo principal de uma publicação, como índices, d
 </body>
 ```
 
-**epub:type="abstract"**
-Um breve resumo das principais idéias, conceitos e conclusões do trabalho, ou de uma seção ou trecho dele.
+**epub:type="abstract"** Um breve resumo das principais idéias, conceitos e conclusões do trabalho, ou de uma seção ou trecho dele.
 
 ```html
 <header>
@@ -402,8 +400,9 @@ para qualquer fim, mesmo que comercial.</p>
 </blockquote>
 ```
 
-**epub:type="bibliography"** Uma lista de trabalhos citados.
-Bibliografia deve ser estruturada em listas ordenadas <ol>. Utilize elementos <section> para organizar a bibliografia em seções lógicas. Se a seção não tiver um título <h1>, utilize o atributo aria-label para fornecer informação a tecnologia assistiva.
+**epub:type="bibliography"** Uma lista de trabalhos citados. Bibliografia deve ser estruturada em listas ordenadas <ol>. 
+
+Utilize elementos <section> para organizar a bibliografia em seções lógicas. Se a seção não tiver um título <h1>, utilize o atributo aria-label para fornecer informação a tecnologia assistiva.
 	
 ```html
 	<section epub:type="bibliography">
