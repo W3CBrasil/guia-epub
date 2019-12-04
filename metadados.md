@@ -61,7 +61,7 @@
 <dc:creator id="creator01">NIC.br</dc:creator>
 <dc:creator id="creator02">RNP</dc:creator>
 ```
-**dc:date:** Deve ser usado apenas para definir a data de publicação da publicação EPUB.
+**dc:date**: Deve ser usado apenas para definir a data de publicação da publicação EPUB.
 
 **Atributos:id** (opcional) 
 
