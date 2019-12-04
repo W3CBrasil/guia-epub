@@ -400,8 +400,8 @@ para qualquer fim, mesmo que comercial.</p>
 </blockquote>
 ```
 
-**epub:type="bibliography"** Uma lista de trabalhos citados. Bibliografia deve ser estruturada em listas ordenadas <ol>. 
-Utilize elementos <section> para organizar a bibliografia em seções lógicas. Se a seção não tiver um título <h1>, utilize o atributo aria-label para fornecer informação a tecnologia assistiva.
+**epub:type="bibliography"** Uma lista de trabalhos citados. Bibliografia deve ser estruturada em listas ordenadas `<ol>`. 
+Utilize elementos <section> para organizar a bibliografia em seções lógicas. Se a seção não tiver um título `<h1>`, utilize o atributo aria-label para fornecer informação a tecnologia assistiva.
 	
 ```html
 	<section epub:type="bibliography">
