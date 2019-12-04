@@ -101,7 +101,7 @@ Atributos: href, rel (obrigatórios) media-type (obrigatório, dependendo do tip
 <dc:publisher>Comitê Gestor da Internet no Brasil</dc:publisher>
 ```
 **dc:relation:** Um recurso relacionado.
-**Atributos:** dir, id, xml:lang (opcionais) 
+**Atributos: dir, id, xml:lang** (opcionais) 
 ```html
 <dc:relation>http://cartilha.cert.br/recursos/</dc:relation>
 ```
