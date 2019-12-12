@@ -14,3 +14,8 @@ Em 2017 houve uma mudança nos rumos do formato ePub. O consórcio  IDPF (Intern
 Esta união tinha sindo anunciada e estudada desde 2016, quando integrantes do IDPF e interessados foram convidados a dar feedback sobre a união e foi disponibilizada uma FAQ sobre a questão, que finalmente no dia 18 de janeiro 2017 foi sancionada em um encontro no Digital Book World (Nova York City). Na prática, o IDPF deixou de existir unindo-se definitivamente ao W3C com o propósito de dar continuidade ao trabalho de produção das especificações do ePub.
 
 A palavra ePub é a composição de Eletronic Publication. A ideia de usar o “eletronic” foi uma escolha ponderada, pois visava a apresentar o ePub como um formato padrão para outros modelos de publicações, além dos livros.
+
+### Tecnologia Web de um ePub
+    * HTML
+    * CSS
+    * SVG
