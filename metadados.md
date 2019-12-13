@@ -1,4 +1,5 @@
-# Metadados
+# Metadados obrigatórios (definições pelo W3C)   
+Atributos que devem ser inseridos no arquivo ".opf" para expor dados estruturais da publicação, como ISBN, título, autor, etc. 
 
 **dc:identifier:** Refere-se ao identificador associado da publicação. Pode ser um UUID, DOI ou ISBN.   
 
@@ -33,6 +34,7 @@
 ```
 
 # Metadados opcionais (definições pelo W3C)   
+Metadados que podem fornecer informação complementar sobre a publicação. Também deve ser inserido no arquivo ".opf".
 
 **Link (elemento):** Utilizado para relacionar outras fontes ao documento
 
@@ -100,6 +102,7 @@
 ```
 
 # Metadados opcionais (definições pelo Dublin Core)
+Dublin Core é um esquema de metadados para descrever objetos digitais. Ele fornece um vocabulário para ampliar os metadados de uma aplicação além dos recomendados/sugeridos pelo W3C.
 
 **dc:description:** Uma conta do recurso. A descrição pode incluir, mas não está limitada a: um resumo, um índice, uma representação gráfica ou texto livre do recurso.
 
@@ -156,6 +159,10 @@ https://www.w3.org/publishing/epub3/epub-packages.html
 https://www.dublincore.org/specifications/dublin-core/dcmi-terms/   
 http://rs.tdwg.org/dwc/terms/#dcterms:modified   
 EPUB 3 Best Practices. Garrish, M., Gylling , M. 2013. O′Reilly; Edição: 1   
+
+# Utilizando epub:type
+
+Serve para oferecer marcação semântica ao conteúdo de um documento ePub. Diferente dos metadados anteriores, o atributo ```epub:type``` é adicionado aos elementos HTML de uma publicação. Esse atributo fornece consistência de marcação para processamento de conteúdo em ePub.
 
 
 **epub:type** Atributo com o objetivo de estender a semântica do HTML relacionando a áreas da publicação. Os mais comuns são:
