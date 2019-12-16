@@ -1092,12 +1092,14 @@ O elemento de ```<video>``` também inclui o atributo ```poster``` para permitir
 
 O acordo sobre o suporte universal para um codec e um contêiner de vídeo não pôde ser alcançado em HTML5 e é uma questão similar para EPUB 3. Embora a especificação EPUB 3 permita tecnicamente qualquer formato (sem retorno), o IDPF recomenda um ou ambos os formatos MP4 e WebM. Embora isso não pareça ser uma questão de acessibilidade, considere que isso significa que muitos outros leitores podem estar confiando em recursos que você pode antever antecipadamente.
 
-Example 1 — Enabling native controls with the controls attribute
+Habilitando controles nativos com o atributo ```controls```
+```
 <video
    src="video/the_general.webm"
    controls="controls">
    …
 </video>
+```
 Incluindo mais de uma opção de vídeo usando o elemento de ```<source>```
 ```
 <video controls="controls">
@@ -1163,3 +1165,100 @@ Referências e padrões de conformidade
 * WCAG 2.0 - [G81: Fornecer um vídeo sincronizado com intérprete de lingu de sinais que pode ser exibido em uma janela/viewport diferente ou sobreposto na imagem pelo tocador de mídia](http://www.w3.org/TR/WCAG20-TECHS/G81.html)
 * WCAG 2.0 - [G87: Fornecendo legendas](http://www.w3.org/TR/WCAG20-TECHS/G87.html)
 * WCAG 2.0 - [G93: fornecendo legendas abertas (sempre visíveis)](http://www.w3.org/TR/WCAG20-TECHS/G93.html)
+
+
+
+
+
+## Notas e notas de rodapé
+As notas de rodapé e as notas finais provaram um impedimento para a experiência de leitura porque interrompem o fluxo narrativo. Quando as notas de rodapé são colocadas imediatamente após o parágrafo que as referencia, os usuários precisavam navegar manualmente por cada uma, pois normalmente são indistinguíveis do conteúdo do texto. Mesmo as notas de fim, agrupadas no final da seção, exigem que o usuário passe por elas.
+
+Os elementos estruturais do HTML5, juntamente com o atributo ```role```, fornecem um meio de aliviar esse problema, marcando claramente notas de rodapé, notas de rodapé individuais e seções. Isso não apenas permite que os agentes acessíveis ignorem as notas, exceto quando seguidos de suas referências, mas permite que qualquer agente os trate de forma mais inteligente (por exemplo, como pop-ups).
+
+As anotações colocadas na narrativa principal devem ser marcadas usando o elemento HTML5 ```aside```. Esse uso garante que, mesmo que sua semântica não seja reconhecida, as notas ainda serão tratadas como conteúdo secundário devido à natureza do elemento HTML5 ```aside```.
+
+As notas agrupadas no final de uma seção não precisam ser marcadas individualmente como ```aside```, mas devem ser agrupadas usando as notas de rodapé semânticas apropriadas. As listas são um meio eficaz de representar grupos de notas nessas seções, pois permitem que os usuários as movam com mais eficiência (por exemplo, cada número de item da lista normalmente corresponde sequencialmente ao número da nota contida, e os usuários devem ter a capacidade de pular mais de um item da lista por vez, quando houver muitas anotações).
+
+**Notas em tabelas**
+
+Se ocorrerem notas em uma tabela, evite colocá-las em um elemento ```tfoot```, pois ele se destina a resumos das colunas. 
+
+**Nota Referências**
+
+As referências de notas devem ser marcadas usando o elemento ```a``` do HTML5.
+Não use o elemento ```sup``` para substituir referências de notas, pois é uma marcação de apresentação redundante. A propriedade CSS ```vertical-align``` pode ser definida para substituir os elementos ```a```.
+
+**Referenciamento para retorno**
+
+Embora não seja especificamente necessário estar acessível, é uma boa prática vincular grupos de notas aos locais de referência no texto. Se um usuário estiver pesquisando as notas, os links na referência permitirão encontrar rapidamente o texto ao qual a nota se refere.
+
+**Exemplos**
+
+Exemplo de nota de rodapé no corpo da página
+
+```
+<p>
+   In that
+   year<a href="#ft2f" role="doc-noteref" epub:type="noteref">2</a>
+   there were 67 mills engaged in the manufacture of
+   cotton goods …
+</p>
+<aside id="ft2f" role="doc-footnote" epub:type="footnote">
+   <p>
+     2 The manufacturing statistics for 1900 which
+     follow are not those given in the Twelfth
+     Census, but are taken from the 
+     <em>Census of Manufactures</em> …
+   </p>
+</aside>
+<p>…</p>
+```
+
+Grupo de notas no final de sessão
+```
+<section epub:type="endnotes" role="doc-endnotes"> 
+   <h2>End Notes</h2>
+   <ol>
+     <li role="doc-endnote">
+       According to the usual nomenclature, the
+       branch flowing S.W. is called the Chattooga;
+       this unites with the Tallulah to form the 
+       Tugaloo, which …
+     </li>
+     …
+   </ol>   
+</section>
+```
+
+CSS para subescrever notas de referências
+```
+a[role~='doc-noteref'] {
+   vertical-align: super;
+   line-height: normal;
+   font-size: smaller;
+}
+```
+Link de retorno na nota de rodapé
+```
+<aside role="doc-footnote">
+   <p><a href="#ref" role="doc-backlink" title="Go to note reference">1.</a> 
+   According to the usual nomenclature, the …</p>
+</li>
+```
+Link de retorno na nota de fim
+```
+
+The backlink follows the note text to avoid any conflicts with automatic list numbering. 
+The link is placed in its own element so that the user does not have to listen to the 
+note before being able to activate it.
+
+<li role="doc-endnote">
+   <p>According to the usual nomenclature, the …</p>
+   <p><a href="#ref" role="doc-backlink">Go to note reference</a></p>
+</li>
+```
+
+Referências e padrões de conformidade
+* DPUB-ARIA — [```doc-footnote```](https://www.w3.org/TR/dpub-aria-1.0/#doc-footnote)
+* DPUB-ARIA — [```doc-endnote```](https://www.w3.org/TR/dpub-aria-1.0/#doc-endnote)
+* DPUB-ARIA — [```doc-endnotes```](https://www.w3.org/TR/dpub-aria-1.0/#doc-endnotes)
