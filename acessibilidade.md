@@ -1262,3 +1262,100 @@ Referências e padrões de conformidade
 * DPUB-ARIA — [```doc-footnote```](https://www.w3.org/TR/dpub-aria-1.0/#doc-footnote)
 * DPUB-ARIA — [```doc-endnote```](https://www.w3.org/TR/dpub-aria-1.0/#doc-endnote)
 * DPUB-ARIA — [```doc-endnotes```](https://www.w3.org/TR/dpub-aria-1.0/#doc-endnotes)
+
+
+## Capa
+As imagens de capa geralmente transmitem informações importantes sobre uma publicação - mais do que apenas o título e o autor. Uma capa pode fornecer um contexto adicional, como a relação da publicação com outros trabalhos. Pode incluir uma imagem pela qual a publicação é conhecida.
+
+Apesar da importância das imagens de capa, ainda é comum encontrá-las descritas apenas pelo texto alternativo inútil "imagem de capa". Isso prejudica qualquer usuário que não consiga ver a imagem, pois não poderá determinar se a publicação corresponde a uma descrição coloquial.
+
+Por esse motivo, é recomendável incluir o máximo de informações pertinentes possível sobre a capa em sua alternativa. A inclusão de qualquer conteúdo de texto representado na imagem é um bom ponto de partida, mas também inclui uma breve descrição da própria imagem da capa, sempre que aplicável (por exemplo, algumas capas podem não incluir uma imagem, mas apenas ter uma cor sólida).
+
+Às vezes, é necessária uma descrição mais longa da capa, como quando uma capa mostra uma imagem de uma pintura, artefato ou antiguidade.
+
+O EPUB 3 também permite que a imagem da capa seja identificada no documento do pacote, adicionando o valor cover-image ao atributo de propriedades do item de manifesto da imagem.
+
+Quando fornecida, essa imagem é comumente usada pelos sistemas de leitura do EPUB para exibição ao usuário na estante de livros e como uma página inicial ao carregar uma publicação. Não há como fornecer texto alternativo ou uma descrição para a imagem, mas os sistemas de leitura geralmente fornecem informações sobre títulos e autores na estante para garantir que os leitores possam acessar suas publicações.
+
+Exemplos:
+
+Arquivo de capa no HTML
+```
+<img src="images/cover.jpg"
+     role="doc-cover"
+     alt="EPUB 3 Best Practices - O'Reilly - Pencil drawing of a goat">
+Example 2 — HTML cover with description
+```
+Adicionando descrição detalhada utilizando o atributo ```aria-describedby```.
+```
+<img src="images/cover.jpg"
+     role="doc-cover"
+     alt="Accessible EPUB 3 - O'Reilly - Pencil drawing of a goat"
+     aria-describedby="cover-desc">
+<p id="cover-desc" hidden="hidden">Best practices for creating universally usable content.
+   Excerpt from EPUB 3 Best Practices</p>
+   ```
+Capa no documento empacotado (.opf)
+```
+<manifest xmlns:dc="http://purl.org/dc/elements/1.1/" …>
+   <item src="images/cover.jpg"
+         id="cover"
+         media-type="image/jpeg"
+         properties="cover-image"/>
+   …
+</manifest>
+```
+Referências e padrões de conformidade:
+
+* EPUB 3 — [The ```cover-image``` property](http://idpf.org/epub3/latest/packages/#cover-image)
+
+
+## Título da publicação
+Um título é um elemento obrigatório em todas as versões do EPUB. É expresso na seção de metadados do documento no elemento ```title``` Dublin Core.
+
+Esse título geralmente é usado para identificar a publicação nos agentes do usuário. O título permite que o usuário não apenas saiba qual publicação possui em sua estante ou biblioteca, mas permite que a publicação seja facilmente encontrada novamente.
+
+Quando um título é omitido, os agentes do usuário normalmente geram um nome genérico, como "Sem título". Quanto mais publicações desse tipo o usuário carregar, mais difícil será distinguir qual é qual.
+
+Exemplo:
+```
+<metadata xmlns:dc="http://purl.org/dc/elements/1.1/" …>
+   <dc:title>Alice's Adventures in Wonderland</dc:title>
+   …
+</metadata>
+```
+Referências e padrões de conformidade:
+* EPUB 3 — [The ```title``` element](http://idpf.org/epub3/latest/packages/#sec-opf-dctitle)
+* EPUB 2 — [```<title></title>```](http://www.idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.1)
+
+## Teclas de acesso
+As teclas de acesso permitem que os usuários pulem rapidamente para locais específicos do documento pressionando a combinação de teclas correspondente no teclado. Embora isso pareça um recurso útil, na prática as teclas de acesso causam mais problemas do que resolvem.
+
+Em particular, as teclas de acesso geralmente entram em conflito com os mapeamentos de teclas existentes nos navegadores e nas tecnologias assistivas. Nesses casos, a tecla de acesso geralmente é ignorada, não deixando valor para os atalhos. Se eles substituirem os mapeamentos existentes, os usuários não poderão acessar a funcionalidade normal da combinação.
+
+Os autores também precisam garantir que eles não atribuam acidentalmente a mesma tecla de acesso a mais de um elemento. Se isso acontecer, apenas a primeira instância será reconhecida.
+
+Como regra, é melhor evitar teclas de acesso ao criar conteúdo para um amplo público de usuários.
+
+Referências e padrões de conformidade:
+* HTML5 — [The ```accesskey``` attribute](https://www.w3.org/TR/html/editing.html#the-accesskey-attribute)
+
+## Objeto
+## Título da página
+## Quebras de contexto
+## Idioma da publicação
+## SVG
+## Formulários
+## MathML
+## Identificadores
+## Meta
+## Atributo de função ARIA
+## Cor
+## Referência de Propriedade CSS
+## ARIA
+## Aprimoramento progressivo
+## Marcos históricos
+## Navegação na Página
+## Destacando
+
+http://kb.daisy.org/publishing/docs/
