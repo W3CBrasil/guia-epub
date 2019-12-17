@@ -333,8 +333,13 @@ Para relacionar o arquivo CSS ao código, utilize o elemento ```link``` da segui
    …
 </html>
 ```
-## Idioma do documento
-Especificar o idioma padrão de um documento - bem como quaisquer alterações no documento, como instâncias de termos de idioma estrangeiro, diálogo ou passagens em outro idioma - ajuda a garantir que as tecnologias de suporte possam renderizar corretamente o texto (por exemplo, para que os caracteres de braille corretos sejam apresentados, ou que uma voz seja capaz de renderizar o idioma usado).
+
+
+
+## Idioma da publicação e do documento
+Especificar o idioma padrão do empacotamento e de um documento - bem como quaisquer alterações no documento, como instâncias de termos de idioma estrangeiro, diálogo ou passagens em outro idioma - ajuda a garantir que as tecnologias de suporte possam renderizar corretamente o texto. Sem informações do idioma da publicação, a comunicação das informações em uma estante poderia ser comprometida, por exemplo.
+
+A identificação dos idiomas principais da publicação fornece aos sistemas de leitura a capacidade de melhorar a experiência do usuário. Com essas informações, o sistema de leitura pode fornecer acesso a dicionários personalizados, otimizar os recursos de pesquisa de publicação em pan ou pré-carregar pacotes de idiomas de texto para fala para acelerar a reprodução.
 
 Para definir o idioma padrão para um documento XHTML, os atributos ```lang``` e ```xml:lang``` language devem ser inseridos no elemento html de conteúdo. O código de idioma definido nesses atributos deve coincidir com um dos códigos de idioma especificados em um elemento dc:lang na seção de metadados do documento do pacote.
 
@@ -362,6 +367,41 @@ Quando anexado a elementos dentro do elemento ```<body>```, os atributos identif
    </body>
 </html>
 ```
+
+Também é necessário declarar o idioma do empacotamento:
+```
+<package … xml:lang="en">
+```
+Quando há necessidade de alteração do idioma no arquivo .opf, isso pode ser feito com o atributo ```xml:lang```:
+```
+<package … xml:lang="en">
+   <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+     …
+     <dc:creator id="creator">Haruki Murakami</dc:creator>
+     <meta property="alternate-script" xml:lang="ja">村上 春樹</meta>
+     …
+   </metadata>
+   …
+</package>
+```
+O atributo ```dc:language``` deve ser utilizado para declarar o idioma da publicação dno documento . opf:
+```
+<metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+     …
+     <dc:language>fr</dc:language>
+     <dc:language>en</dc:language>
+     …
+   </metadata>
+```
+
+Referências e padrões de conformidade
+* HTML5 — [The lang and xml:lang attributes](https://www.w3.org/TR/html/dom.html#the-lang-and-xml:lang-attributes)
+* [Language on the Web](https://www.w3.org/International/getting-started/language)
+* EPUB 3 — [The language element](http://www.idpf.org/epub3/latest/packages/#sec-opf-dclanguage)
+* EPUB 2 — [<language> </language>](http://www.idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.12)
+* [Language tags in HTML and xml](https://www.w3.org/International/articles/language-tags/)
+* [RFC5646 — Tags for Identifying Languages](http://www.rfc-editor.org/rfc/rfc5646.txt)(BCP 47)
+
 ## Número de páginas
 
 Se um ebook for produzido a partir do mesmo fluxo de trabalho que um documento impresso, os marcadores de paginação de impressão devem ser mantidos no documento. Esses marcadores beneficiam os leitores em ambientes mistos de impressão/digital, como uma sala de aula, pois os números de página permitem um ponto de referência comum entre as duas edições.
@@ -1341,9 +1381,46 @@ Referências e padrões de conformidade:
 * HTML5 — [The ```accesskey``` attribute](https://www.w3.org/TR/html/editing.html#the-accesskey-attribute)
 
 ## Objeto
-## Título da página
+O elemento ```object``` permite a incorporação de conteúdo multimídia em documentos HTML. Entretanto, seu uso para conteúdo de áudio e vídeo geralmente é desencorajado, pois carece dos controles de reprodução acessíveis fornecidos pelos elementos de áudio e vídeo.
+
+Não inclua alternativas de mídia, como transcrições, no corpo de um ```object```. Se o formato de áudio ou vídeo puder ser reproduzido, os usuários que precisam acessar a transcrição não terão acesso a ela.
+
+Como o elemento de ```object``` é usado com mais frequência para incorporar conteúdo não HTML, é necessário fornecer um fallback para usuários que não podem acessar o conteúdo em sua forma nativa. A maneira comum de conseguir isso é fornecer um equivalente em HTML no corpo do elemento ```object```. Este conteúdo é apresentado ao usuário se o formato especificado não for suportado.
+
+Exemplo:
+```
+<object data="data/timesheet.xls">
+   <table>
+     <thead>
+       <tr>
+         <th>Employee</th>
+         <th>ID</th>
+         <th>Activity</th>
+         <th>Station</th>
+         <th>Completed</th>
+         <th>Start</th>
+         <th>End</th>
+         <th>Total Hours</th>
+       </tr>
+     </thead>
+     …
+   </table>
+</object>
+```
+
+Referências e padrões de conformidade:
+* HTML5 — [The ```object``` element](https://www.w3.org/TR/html/semantics-embedded-content.html#the-object-element)
+
+
 ## Quebras de contexto
-## Idioma da publicação
+Uma quebra de contexto representa uma mudança de pensamento, tempo, local ou similar em uma obra de ficção ou não-ficção. Essas alterações são normalmente representadas por um espaço em branco perceptível entre parágrafos (ou seja, consideravelmente mais do que ocorre entre parágrafos). 
+
+No passado, margens e imagens CSS eram usadas para incluir quebras de contexto, mas a especificação HTML5 redefiniu a semântica do elemento hr especificamente para esse fim. O estilo CSS pode ser aplicado para alterar a aparência padrão.
+
+O elemento hr não deve ser usado para fins puramente decorativos, como decoração entre seções, ou no início ou no final delas.
+
+
+
 ## SVG
 ## Formulários
 ## MathML
