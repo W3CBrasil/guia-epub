@@ -1422,6 +1422,73 @@ O elemento hr não deve ser usado para fins puramente decorativos, como decoraç
 
 
 ## SVG
+A melhor forma de inserir conteúdo em SVG é diretamente no código HTML de uma página, pois isso permite a exposição do DOM do SVG a tecnologia assistiva. 
+Caso não seja necessário interagir ou extrair conteúdo do SVG é possível utilizar o elemento ```img``` ou ```object```.
+Para garantir acessibilidade de conteúdo em SVG em sua aplicação, fique atento aos seguintes detalhes:
+### Idioma
+Declare o idioma do conteúdo em SVG:
+```
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="en" lang="en">
+   …
+</svg>
+```
+Lembre-se de que esse idioma pode ser alterado a qualquer momento:
+```
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="en" lang="en">
+   …
+   <text … >I think therefore I am...</text>
+   <text … xml:lang="fr" lang="fr">Je pense donc je suis...</text>
+   <text … xml:lang="it" lang="it">Penso dunque sono...</text>
+   …
+</svg>
+```
+### Títulos e descrições
+Imagens em SVG devem conter elementos descritivos, utilizando ```title``` para a declaração do título e o elemento ```desc``` para proporcionar descrição deste conteúdo. Esses elementos tem função de apresentar ao leitor informações relevantes, que serão expostas a APIs de acessibilidade e acessadas por tecnologia assistiva.
+```
+<svg
+	 xmlns="http://www.w3.org/2000/svg"
+	 xml:lang="en" lang="en">
+   <title>The New EPUB Logo</title>
+   <desc>
+	  The EPUB logo is a lower-case letter E that has 
+	  been tilted 45 degrees to counter-clockwise so 
+	  that it appears to be sitting in balance on its 
+	  lower-left corner. The E is drawn as a single, 
+	  unclosed line of green starting at the centre 
+	  of the image, moving to the outer edge and then 
+	  continuing around in a box-like pattern. The
+	  external corners have all been rounded.
+   </desc>
+   …
+</svg>
+```
+### Texto em SVG
+Quando um texto fizer parte de uma imagem em SVG utilize o elemento ```text``` para declará-lo. Dessa forma seu comportamento será como texto e ele pode ser lido por tecnologia assistiva.
+### Links
+Para facilitar a compreensão e o destino dos links, utilize o elemento ```title``` para fornecer uma descrição do link.
+```
+<a href="http://www.ontario.ca">
+   <title>Ontario government web site</title>
+   <g …>
+      …
+   </g>
+</a>
+```
+### ARIA
+Atributos de ```aria``` podem ser inseridos no SVG para ampliar a acessibilidade dos elementos. Atributos como ```role=presentation``` (para retirar a semântica do elemento) ou ```aria-label``` (para adicionar descrições) podem ser úteis principalmente em aplicações muito complexas.
+
+Referências e padrões de conformidade:
+
+* SVG — [The 'xml:lang' and 'xml:space' atributes]( http://www.w3.org/TR/SVG2/struct.html#LangSpaceAttrs)
+* SVG — [The ‘desc’ and ‘title’ elements] (https://www.w3.org/TR/SVG2/struct.html#DescriptionAndTitleElements)
+* SVG — [Text] (http://www.w3.org/TR/SVG2/text.html)
+* SVG — [Linking] (http://www.w3.org/TR/SVG2/linking.html)
+* SVG — [Styling] (http://www.w3.org/TR/SVG2/styling.html)
+* SVG — [Appendix D: Accessibility Support] (https://www.w3.org/TR/SVG2/access.html)
+
+
+## Formulários
+
 ## Formulários
 ## MathML
 ## Identificadores
